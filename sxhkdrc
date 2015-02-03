@@ -7,8 +7,7 @@
 # Quit
 super + alt + Escape
 	pamixer --get-volume > ~/.volume \
-	pkill panel \
-	bspc quit
+	pkill panel
 
 # Balance tree
 super + b
@@ -52,7 +51,7 @@ super + alt + Return
 
 # dmenu
 super + space
-	dmenu_run -fn '-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-u' -x 10 -y 10 -h 20 -w 1346
+	dmenu_wrapper
 
 # Reload SXHKD
 super + r

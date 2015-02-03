@@ -4,16 +4,22 @@
 # by Ivan Sokolov
 #
 
+WHITE=f8f8f8
+RED=a54242
+GREEN=8c9440
+BLACK=202020
+GRAY=404040
+
 function A {
 	echo -n "%{A:$2:}$1%{A}"
 }
 
 function B {
-	echo -n "%{B#$2}$1%{B-}"
+	echo -n "%{B#ff$2}$1%{B-}"
 }
 
 function F {
-	echo -n "%{F#$2}$1%{F-}"
+	echo -n "%{F#ff$2}$1%{F-}"
 }
 
 function o {
@@ -26,52 +32,62 @@ function u {
 
 ###
 
-DIV=$(F '|' 'ff404040')
+DIV=$(F '|' $GRAY)
 
 ###
 
 network() {
-	ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo -n $(F + ff00ff00) || echo -n $(F - ffff0000)
+	ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo -n $(F + $GREEN) || echo -n $(F - $RED)
 }
 
 calendar() {
 	DATE=$(date -u +%d/%m/%y)
-	echo -n $(F $DATE ffffffff)
+	echo -n $(F $DATE $WHITE)
 }
 
 clock() {
 	TIME=$(date -u +%H:%M)
-	echo -n $(F $TIME ffffffff)
+	echo -n $(F $TIME $WHITE)
 }
 
 volume() {
 	VOLUME=$(pamixer --get-volume)
-	echo -n "$(A $(F $VOLUME ffffffff) volume)"
+	if [[ $(pamixer --get-mute) -eq 'true' ]]
+	then
+		VCOLOR=$WHITE
+	else
+		VCOLOR=$GRAY
+	fi
+	echo -n "$(A $(F $VOLUME $VCOLOR) volume)"
 }
 
 battery() {
 	BATTERY=$(acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g')
 	if [[ $BATTERY -gt 20 ]]
 	then
-		BCOLOR=ffffff
+		BCOLOR=$WHITE
 	else
-		BCOLOR=ff0000
+		BCOLOR=$RED
 	fi
 	echo -n $(F $BATTERY ff$BCOLOR)
 }
 
 layout() {
-	echo -n "$(A $(F $(xkb-switch) ffffffff) layout)"
+	echo -n "$(A $(F $(xkb-switch) $WHITE) layout)"
 }
 
 mpc_status() {
 	if [[ -n $(mpc | grep playing) ]]
 	then
-		echo -n "$(F "$(mpc current -f '[%title% - %album% - %artist%]|[%file%]')" ffffffff)"
+		echo -n "$(F "$(mpc current -f "[%title%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%album%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%artist%]")" $WHITE) "
 	else
 		echo -n ''
 	fi
 }
+
+#		echo -n "$(F "$(mpc current -f "[%title% $(F - $GRAY) %album% $(F - $GRAY) %artist%]|[%file%]")" $WHITE)"
 
 mpc_controls() {
 	echo -n ''
@@ -84,7 +100,7 @@ do
 	# Desktops
 	for i in 1 2 3 4 5
 	do
-		printf ' %s' "%{A:$i:}$(F \| ff404040)$(F $i ffffffff)$(F \| ff404040)%{A}"
+		printf ' %s' "%{A:$i:}$(F \| $GRAY)$(F $i $WHITE)$(F \| $GRAY)%{A}"
 	done
 	
 	# Center
@@ -103,7 +119,7 @@ do
 
 	sleep 0.5s
 done | bar-aint-recursive \
-	-F "#ff$ACTIVE" \
-	-B "#ff202020" \
+	-F \#ff$WHITE \
+	-B \#ff$BLACK \
 	-g 1346x20+10+10 \
 	-f '-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-u' | ~/.config/bspwm/spawner

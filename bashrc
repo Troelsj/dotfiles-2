@@ -8,7 +8,7 @@
 #PS1='[\u@\h \W]\$ '
 #PS1=' \w $ '
 # • ≡ →
-export PS1=" \[\e[36m\]\w\[\e[0m\] "
+export PS1=" \[\e[33m\]\w\[\e[0m\] "
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/bin/
@@ -35,12 +35,9 @@ alias mkdir='mkdir -p'
 alias tree='tree -C'
 alias free='free -m'
 
-alias fehbg='feh --bg-fill'
 alias date='date -u'
 
 alias x='startx'
-
-alias dmenu_run="dmenu_run -fn -*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-u"
 
 #alias yaourt\ -Rcsn='yaourt -Rcsn --color always'
 
