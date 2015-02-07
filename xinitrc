@@ -23,7 +23,7 @@ pamixer --set-volume $(cat ~/.volume)
 pamixer --unmute
 
 sxhkd &
-bspwm -c ~/.config/bspwm/bspwmrc &
 compton -cb &
 ~/.fehbg &
-~/.config/bspwm/panel 2>/dev/null
+~/.config/bspwm/panel 2>/dev/null &
+bspwm -c ~/.config/bspwm/bspwmrc

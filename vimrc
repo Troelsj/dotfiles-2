@@ -11,7 +11,7 @@ set mousehide
 set showcmd
 
 set matchpairs+=<:>
-set showmatch
+"set showmatch
 
 set autoread
 

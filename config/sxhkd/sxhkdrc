@@ -5,9 +5,14 @@
 #
 
 # Quit
-super + alt + Escape
-	pamixer --get-volume > ~/.volume \
-	pkill panel
+super + Escape
+	pamixer --get-volume > ~/.volume; bspc quit
+
+###########
+#         #
+# Windows #
+#         #
+###########
 
 # Balance tree
 super + b
@@ -21,11 +26,21 @@ super + {g,f,s,l}
 alt + w
 	bspc window -c
 
-# Desktops
+############
+#          #
+# Desktops #
+#          #
+############
+
 super + {1-5}
 	bspc desktop -f ^{1-5}
 
-# Mouse
+#########
+#       #
+# Mouse #
+#       #
+#########
+
 ~button1
 	bspc pointer -g focus
 
@@ -38,9 +53,11 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-#
-# Non WM hotkeys
-#
+################
+#              #
+# Applications #
+#              #
+################
 
 # URxvt
 super + Return
@@ -55,5 +72,10 @@ super + space
 
 # Reload SXHKD
 super + r
-	pkill -USR1 -x sxhkd \
-	~/.config/bspwm/bspwmrc
+	pkill -USR1 -x sxhkd
+
+XF86AudioLowerVolume
+	pamixer --decrease 1
+
+XF86AudioRaiseVolume
+	pamixer --increase 1

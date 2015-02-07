@@ -115,7 +115,8 @@ do
 	printf ' %s' $(volume) $DIV 
 	# printf ' %s' $(battery) $DIV 
 	printf ' %s' $(clock)
-	printf ' %s \n' $(calendar)
+	printf ' %s' $(calendar) $DIV
+	printf ' %s \n' "$(A "$(F "*" "$RED")" 'bspc quit')"
 
 	sleep 0.5s
 done | bar-aint-recursive \
