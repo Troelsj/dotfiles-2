@@ -81,27 +81,28 @@ mpc_status() {
 	then
 		echo -n "$(F "$(mpc current -f "[%title%]")" $WHITE) $DIV "
 		echo -n "$(F "$(mpc current -f "[%album%]")" $WHITE) $DIV "
-		echo -n "$(F "$(mpc current -f "[%artist%]")" $WHITE) "
+		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $WHITE) "
 	else
 		echo -n ''
 	fi
 }
 
-#		echo -n "$(F "$(mpc current -f "[%title% $(F - $GRAY) %album% $(F - $GRAY) %artist%]|[%file%]")" $WHITE)"
-
 mpc_controls() {
 	echo -n ''
+}
+
+desktops() {
+	for i in 1 2 3 4 5
+	do
+		printf '%s' "%{A:$i:}$(F '--' $BLACK)$(F $i $WHITE)$(F '--' $BLACK)%{A}"
+	done
 }
 
 while true
 do
 	# Left
 	printf '%s' '%{l}'
-	# Desktops
-	for i in 1 2 3 4 5
-	do
-		printf ' %s' "%{A:$i:}$(F \| $GRAY)$(F $i $WHITE)$(F \| $GRAY)%{A}"
-	done
+	desktops
 	
 	# Center
 	printf '%s' '%{c}'

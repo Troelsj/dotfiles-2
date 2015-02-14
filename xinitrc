@@ -16,13 +16,12 @@ xset fp rehash
 
 # [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
-
-wmname LG3D
+[[ -f ~/.Xcolors ]] && xrdb -merge ~/.Xcolors
 
 pamixer --set-volume $(cat ~/.volume)
 pamixer --unmute
 
-sxhkd &
+sxhkd -f 100 &
 compton -cb &
 ~/.fehbg &
 ~/.config/bspwm/panel 2>/dev/null &

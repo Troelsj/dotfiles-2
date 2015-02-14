@@ -5,6 +5,8 @@ syntax on
 set nowrap
 set number
 
+set cc=80
+
 set mouse=a
 set mousehide
 
@@ -34,3 +36,6 @@ set softtabstop=4
 set autoindent
 set smartindent
 
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
+call plug#end()
