@@ -120,8 +120,4 @@ do
 	printf ' %s \n' "$(A "$(F "*" "$RED")" 'bspc quit')"
 
 	sleep 0.5s
-done | bar-aint-recursive \
-	-F \#ff$WHITE \
-	-B \#ff$BLACK \
-	-g 1346x20+10+10 \
-	-f '-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-u' | ~/.config/bspwm/spawner
+done | bar_wrapper | ~/.config/bspwm/spawner

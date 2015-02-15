@@ -6,7 +6,7 @@
 
 # Quit
 super + Escape
-	pamixer --get-volume > ~/.volume; bspc quit
+	pamixer --get-volume > ~/.volume && bspc quit
 
 ###########
 #         #
@@ -19,12 +19,23 @@ super + b
 	bspc desktop -B
 
 # Change windows params
-super + {g,f,s,l}
+super + {g,f,s,z}
 	bspc window -t {floating,fullscreen,sticky,locked}
 
 # Close window
 alt + w
 	bspc window -c
+
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+
+# Mirror and flip leaves of tree
+super + {comma,period}
+	bspc desktop -F {horizontal,vertical}
+
+# Rotate leaves of tree
+super + shift + {comma,period}
+	bspc desktop -R {90,270}
 
 ############
 #          #

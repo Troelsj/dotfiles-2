@@ -25,4 +25,4 @@ sxhkd -f 100 &
 compton -cb &
 ~/.fehbg &
 ~/.config/bspwm/panel 2>/dev/null &
-bspwm -c ~/.config/bspwm/bspwmrc
+bspwm_wrapper
