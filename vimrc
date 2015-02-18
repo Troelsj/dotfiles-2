@@ -39,3 +39,7 @@ set smartindent
 call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 call plug#end()
+
+set ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+set showcmd
