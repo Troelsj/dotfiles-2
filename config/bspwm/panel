@@ -3,6 +3,8 @@
 # Bar Ain't Recursive panel
 # by Ivan Sokolov
 #
+# Final version, 21.02.15
+#
 
 WHITE=f8f8f8
 RED=a54242
@@ -23,11 +25,11 @@ function F {
 }
 
 function o {
-	echo "%{+o}$1%{-o}"
+	echo -n "%{+o}$1%{-o}"
 }
 
 function u {
-	echo "%{+u}$1%{-u}"
+	echo -n "%{+u}$1%{-u}"
 }
 
 ###
@@ -87,6 +89,7 @@ mpc_status() {
 	fi
 }
 
+# It's was good idea, but I'm lazy
 mpc_controls() {
 	echo -n ''
 }
@@ -94,7 +97,13 @@ mpc_controls() {
 desktops() {
 	for i in 1 2 3 4 5
 	do
-		printf '%s' "%{A:$i:}$(F '--' $BLACK)$(F $i $WHITE)$(F '--' $BLACK)%{A}"
+		if [[ $i -eq "$(bspc query -D -d)" ]]; then
+			printf '%s' "%{A:$i:}$(F "-%{U#ff404040}%{+u}-" $BLACK)$(F $i $WHITE)$(F '-%{U-}%{-u}-' $BLACK)%{A}"
+		elif [[ -n "$(bspc query -W -d ^$i)" ]]; then
+			printf '%s' "%{A:$i:}$(F "-%{U#ff404040}%{+u}-" $BLACK)$(F $i $WHITE)$(F '-%{U-}%{-u}-' $BLACK)%{A}"
+		else
+			printf '%s' "%{A:$i:}$(F '--' $BLACK)$(F $i $WHITE)$(F '--' $BLACK)%{A}"
+		fi
 	done
 }
 
