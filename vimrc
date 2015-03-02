@@ -1,45 +1,73 @@
-set nocompatible
+set title
+set hidden
 
-syntax on
-
-set nowrap
+" Numbers
 set number
+"set numberwidth=4
+set ruler
 
-set cc=80
+syntax enable
+set nomodeline
+set backspace=indent,eol,start " Backspace will delete EOL chars, as well as indents
+set matchpairs+=<:>            " For characters that forms pairs for using % commands, this is for HTML Tags
+set iskeyword+=_,$,@,%,#       " Keywords are use to searching and recognized with many commands
+set history=1000
+set undolevels=1000
+set updatetime=1500
+set confirm
 
 set mouse=a
-set mousehide
 
+" Disable all bells"
+set noerrorbells visualbell t_vb=
+
+" Color column at 80
+set colorcolumn=80
+
+" Backup and Swap"
+set nobackup
+set nowritebackup
+set noswapfile
+
+" Search Options"
+set hlsearch   " Highlight search
+set incsearch  " Incremental search
+set magic      " Set magic on, for regular expressions
+set ignorecase " Searches are Non Case-sensitive
+set smartcase
+
+set encoding=utf-8
+
+" Display extra whitespace
+set list listchars=tab:\|\ ,trail:^
+
+set showmatch        " Shows matching brackets when text indicator is over them
+set scrolloff=5      " Show 5 lines of context around the cursor
+set sidescrolloff=20
+set lazyredraw       " The screen won't be redrawn unless actions took place
+set cursorline
+set scrolljump=10
 set showcmd
+set ttyfast            " Improves redrawing for newer computers
+set pumheight=10
+set diffopt+=context:3
+set startofline
 
-set matchpairs+=<:>
-"set showmatch
+" Formatting Options
+set nowrap
 
-set autoread
-
-set backspace=indent,eol,start
-
-set whichwrap=b,<,>,[,],l,h
-
-" let c_syntax_for_h=""
-
-"set foldenable
-"set foldmethod=syntax
-"set foldmethod=indent
-"set foldcolumn=3
-"set foldopen=all
-"set foldlevel=all
-
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+" Indentation
 set autoindent
+set copyindent
 set smartindent
 
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-call plug#end()
+" Tab Options
+set shiftwidth=4
+set tabstop=4
+set smarttab
 
-set ruler
-set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set showcmd
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+colorscheme jellybeans
