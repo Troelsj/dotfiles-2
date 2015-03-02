@@ -3,6 +3,8 @@
 # Bar Ain't Recursive panel
 # by Ivan Sokolov
 #
+# Final version, 21.02.15
+#
 
 WHITE=f8f8f8
 RED=a54242
@@ -33,7 +35,11 @@ function o {
 }
 
 function u {
+<<<<<<< HEAD
 	echo -n  "%{+u}$1%{-u}"
+=======
+	echo -n "%{+u}$1%{-u}"
+>>>>>>> f78e3b1035ad6230a26f8f38e95fb2a6e1d0a9be
 }
 
 ###
@@ -76,6 +82,7 @@ layout() {
 	echo -n "$(A $(F $(xkb-switch) $WHITE) layout)"
 }
 
+<<<<<<< HEAD
 desktops() {
 	for i in 1 2 3 4 5
 	do
@@ -87,6 +94,33 @@ desktops() {
 			printf '%s' "%{A:$i:}$(F "-%{U#ff808080}%{+o}-" $BLACK)$(F $i $WHITE)$(F '-%{-o}%{U-}' $BLACK)%{A}"
 		else
 			printf '%s' "%{A:$i:}$(F '--' $BLACK)$(F $i $WHITE)$(F '-' $BLACK)%{A}"
+=======
+mpc_status() {
+	if [[ -n $(mpc | grep playing) ]]
+	then
+		echo -n "$(F "$(mpc current -f "[%title%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%album%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $WHITE) "
+	else
+		echo -n ''
+	fi
+}
+
+# It's was good idea, but I'm lazy
+mpc_controls() {
+	echo -n ''
+}
+
+desktops() {
+	for i in 1 2 3 4 5
+	do
+		if [[ $i -eq "$(bspc query -D -d)" ]]; then
+			printf '%s' "%{A:$i:}$(F "-%{U#ff404040}%{+u}-" $BLACK)$(F $i $WHITE)$(F '-%{U-}%{-u}-' $BLACK)%{A}"
+		elif [[ -n "$(bspc query -W -d ^$i)" ]]; then
+			printf '%s' "%{A:$i:}$(F "-%{U#ff404040}%{+u}-" $BLACK)$(F $i $WHITE)$(F '-%{U-}%{-u}-' $BLACK)%{A}"
+		else
+			printf '%s' "%{A:$i:}$(F '--' $BLACK)$(F $i $WHITE)$(F '--' $BLACK)%{A}"
+>>>>>>> f78e3b1035ad6230a26f8f38e95fb2a6e1d0a9be
 		fi
 	done
 }
