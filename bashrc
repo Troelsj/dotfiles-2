@@ -1,13 +1,10 @@
-#
 # ~/.bashrc
 #
+# by Ivan Sokolov
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#PS1='[\u@\h \W]\$ '
-#PS1=' \w $ '
-# • ≡ →
 export PS1=" \[\e[00;37m\]\w\[\e[0m\] "
 
 function selectps {
@@ -18,7 +15,9 @@ function selectps {
 		'pwd')
 			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
 		'def')
-			export PS1='[\u@\h \W]\$ '
+			export PS1='[\u@\h \W]\$ ' ;;
+		'arr')
+			export PS1=" \[\e[01;34m\]-→\[\e[0m\] " ;;
 	esac
 }
 

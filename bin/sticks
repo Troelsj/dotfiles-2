@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 # coding: utf-8
- 
+
 CL = "\e[0m"
 BO = "\e[1m"
 

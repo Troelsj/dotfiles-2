@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Bar Ain't Recursive wrapper
+#
 
 bar-aint-recursive \
 	-F \#fff8f8f8 \

@@ -1,3 +1,9 @@
+" ~/.vimrc
+"
+" by Ivan Sokolov
+
+set nocompatible
+
 set title
 set hidden
 
@@ -48,7 +54,7 @@ set lazyredraw       " The screen won't be redrawn unless actions took place
 set cursorline
 set scrolljump=10
 set showcmd
-set ttyfast            " Improves redrawing for newer computers
+set ttyfast          " Improves redrawing for newer computers
 set pumheight=10
 set diffopt+=context:3
 set startofline

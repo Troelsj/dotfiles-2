@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # BSPWM config file
-#
+# by Ivan Sokolov
 
 bspc config border_width 3
 bspc config window_gap   10
@@ -11,7 +11,7 @@ bspc config right_padding  10
 bspc config bottom_padding 10
 bspc config left_padding   10
 
-bspc monitor last -d web rest
+bspc monitor -d web rest
 
 bspc config split_ratio        0.50
 bspc config gapless_monocle    true
@@ -37,5 +37,3 @@ bspc config active_private_border_color  \#85678f
 bspc config normal_private_border_color  \#85678f
 
 bspc config urgent_border_color \#de935f
-
-bspc rule -a xterm floating=true

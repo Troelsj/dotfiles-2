@@ -1,8 +1,15 @@
 #!/bin/bash
+#
+# SXHKD config file
+# by Ivan Sokolov
 
-#
-# BSPWM hotkeys
-#
+#####################
+#####################
+##                 ##
+##  BSPWM hotkeys  ##
+##                 ##
+#####################
+#####################
 
 # Quit
 super + Escape
@@ -43,8 +50,8 @@ super + shift + {comma,period}
 #          #
 ############
 
-super + {1-5}
-	bspc desktop -f ^{1-5}
+super + {1-9}
+	bspc desktop -f ^{1-9}
 
 #########
 #       #
@@ -75,7 +82,7 @@ super + Return
 	urxvt
 # XTerm
 super + alt + Return
-	termspawn
+	xterm
 
 # dmenu
 super + space

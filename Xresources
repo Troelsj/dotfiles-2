@@ -1,3 +1,7 @@
+! ~/.Xresources
+!
+! by Ivan Sokolov
+
 ! Scrollbar
 *scrollBar:         false
 ! And scrolling
