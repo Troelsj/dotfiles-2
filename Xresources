@@ -9,50 +9,48 @@
 *underlineURLs: true
 
 ! Font
-XTerm*font:     -*-orp-medium-r-*-*-12-*-*-*-*-*-*-*
-XTerm*boldFont: -*-orp-medium-r-*-*-12-*-*-*-*-*-*-*
-URxvt*font:     xft:uushi:size=8
-URxvt*fontBold: xft:uushi:size=8
+XTerm*font:     -*-ohsnap-medium-*-*-*-11-*-*-*-*-*-*-*
+XTerm*boldFont: -*-ohsnap-medium-*-*-*-11-*-*-*-*-*-*-*
+URxvt*font:     -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt*boldFont: -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
 *letterSpace:   0
 
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End:  \033[4~
 
-!URxvt*borderColor: #404040
+!special
+*background: #202020
+*foreground: #f8f8f8
+*cursorColor: #a0a0a0
 
-! special
-!*.foreground:   #f8f8f8
-!*.background:   #202020
-!*.cursorColor:  #ffffff
+!black
+*color0: #404040
+*color8: #606060
 
-! black
-!*.color0:       #404040
-!*.color8:       #808080
+!red
+*color1: #997766
+*color9: #bb9988
 
-! red
-!*.color1:       #a54242
-!*.color9:       #cc6666
+!green
+*color2: #889977
+*color10: #aabb99
 
-! green
-!*.color2:       #8c9440
-!*.color10:      #b5bd68
+!yellow
+*color3: #bbaa88
+*color11: #ddccaa
 
-! yellow
-!*.color3:       #de935f
-!*.color11:      #f0c674
+!blue
+*color4: #444466
+*color12: #666688
 
-! blue
-!*.color4:       #5f819d
-!*.color12:      #81a2be
+!magenta
+*color5: #775566
+*color13: #997788
 
-! magenta
-!*.color5:       #85678f
-!*.color13:      #b294bb
+!cyan
+*color6: #558877
+*color14: #77aa99
 
-! cyan
-!*.color6:       #5e8d87
-!*.color14:      #8abeb7
-
-! white
-!*.color7:       #a0a0a0
-!*.color15:      #f8f8f8
+!white
+*color7: #d6d6d6
+*color15: #f8f8f8
