@@ -8,7 +8,9 @@ do
 	case "$cmd" in
 		volume) pamixer --toggle-mute ;;
 		layout) xkb-switch --next ;;
-		 [1-5]) bspc desktop -f ^$cmd ;;
+		 [1-5])
+#				.config/bspwm/desktopmngr $cmd
+				bspc desktop -f ^$cmd ;;
 		     *) $cmd ;;
 	esac
 done

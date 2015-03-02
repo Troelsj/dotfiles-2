@@ -75,7 +75,7 @@ super + Return
 	urxvt
 # XTerm
 super + alt + Return
-	xterm
+	termspawn
 
 # dmenu
 super + space
@@ -86,7 +86,7 @@ super + r
 	pkill -USR1 -x sxhkd
 
 XF86AudioLowerVolume
-	pamixer --decrease 1
+	pamixer --decrease 5
 
 XF86AudioRaiseVolume
-	pamixer --increase 1
+	pamixer --increase 5

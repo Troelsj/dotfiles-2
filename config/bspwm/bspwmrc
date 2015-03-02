@@ -3,22 +3,26 @@
 # BSPWM config file
 #
 
-bspc config border_width 2
+bspc config border_width 3
 bspc config window_gap   10
-bspc config top_padding  30
 
-bspc monitor -d 1 2 3 4 5
+bspc config top_padding    10
+bspc config right_padding  10
+bspc config bottom_padding 10
+bspc config left_padding   10
 
-bspc config split_ratio        0.5
+bspc monitor last -d web rest
+
+bspc config split_ratio        0.50
 bspc config gapless_monocle    true
 bspc config borderless_monocle true
 
 bspc config focus_follows_pointer true
 
-bspc config focused_border_color \#202020
-bspc config active_border_color  \#202020
-bspc config normal_border_color  \#202020
-bspc config presel_border_color  \#202020
+bspc config focused_border_color \#404040
+bspc config active_border_color  \#404040
+bspc config normal_border_color  \#404040
+bspc config presel_border_color  \#404040
 
 bspc config focused_locked_border_color \#a54242
 bspc config active_locked_border_color  \#a54242
@@ -33,3 +37,5 @@ bspc config active_private_border_color  \#85678f
 bspc config normal_private_border_color  \#85678f
 
 bspc config urgent_border_color \#de935f
+
+bspc rule -a xterm floating=true

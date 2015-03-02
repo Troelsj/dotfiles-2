@@ -8,7 +8,19 @@
 #PS1='[\u@\h \W]\$ '
 #PS1=' \w $ '
 # • ≡ →
-export PS1=" \[\e[01;30m\]\w\[\e[0m\] "
+export PS1=" \[\e[00;37m\]\w\[\e[0m\] "
+
+function selectps {
+	[[ -z "$1" ]] && exit
+	case "$1" in
+		'---')
+			export PS1=" \[\e[01;34m\]---\[\e[0m\] " ;;
+		'pwd')
+			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
+		'def')
+			export PS1='[\u@\h \W]\$ '
+	esac
+}
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/bin/
@@ -27,6 +39,7 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+alias cp='cp -r'
 alias rm='rm -rf'
 alias mkdir='mkdir -p'
 alias tree='tree -C'
@@ -47,3 +60,16 @@ alias x='startx'
 alias reload="source $HOME/.bashrc"
 
 alias mpd="mpd ~/.config/mpd/conf"
+alias pamixer="pamixer --get-volume"
+alias cmatrix="cmatrix -alxs"
+
+function export_colors {
+	echo '' > ~/.Xcolors
+	[[ -n "$FGCOLOR" ]] && echo "*foreground: $FGCOLOR" >> ~/.Xcolors
+	[[ -n "$BGCOLOR" ]] && echo "*background: $BGCOLOR" >> ~/.Xcolors
+	[[ -n "$CURSORCOLOR" ]] && echo "*cursorColor: $CURSORCOLOR" >> ~/.Xcolors	
+	for i in {0..15}; do
+		[[ -n $(eval "echo \$COLOR$i") ]] && echo "*color$i: #$(eval "echo \$COLOR$i")" >> ~/.Xcolors
+	done
+	xrdb -merge ~/.Xcolors
+}
