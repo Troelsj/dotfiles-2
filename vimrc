@@ -45,7 +45,8 @@ set smartcase
 set encoding=utf-8
 
 " Display extra whitespace
-set list listchars=tab:\|\ ,trail:^
+"set list listchars=tab:··,trail:^
+set list listchars=tab:\>\ ,trail:^
 
 set showmatch        " Shows matching brackets when text indicator is over them
 set scrolloff=5      " Show 5 lines of context around the cursor
@@ -68,12 +69,22 @@ set copyindent
 set smartindent
 
 " Tab Options
-set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set smarttab
+set noexpandtab
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
 set splitright
 
 colorscheme jellybeans
+
+" Also use local .vimrc
+set exrc
+set secure
+
+" Hooray, bindings!!!
+"noremap : ;
+"noremap ; :

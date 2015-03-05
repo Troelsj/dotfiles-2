@@ -18,6 +18,8 @@ function selectps {
 			export PS1='[\u@\h \W]\$ ' ;;
 		'arr')
 			export PS1=" \[\e[01;34m\]-→\[\e[0m\] " ;;
+		    *)
+		    export PS1="$1" ;;
 	esac
 }
 

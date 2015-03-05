@@ -33,8 +33,8 @@ super + {g,f,s,z}
 alt + w
 	bspc window -c
 
-super + {_,shift + }{h,j,k,l}
-	bspc window -{f,s} {left,down,up,right}
+super + {_,shift +,ctrl +}{h,j,k,l}
+	bspc window -{f,s,p} {left,down,up,right}
 
 # Mirror and flip leaves of tree
 super + {comma,period}

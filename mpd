@@ -7,7 +7,15 @@ db_file "~/.config/mpd/db"
 log_file "~/.config/mpd/log"
 pid_file "~/.config/mpd/pid"
 state_file "~/.config/mpd/state"
+
 audio_output {
 	type "alsa"
 	name "MPD ALSA"
+}
+
+audio_output {
+	type   "fifo"
+	name   "MPD FIFO"
+	path   "/tmp/mpd.fifo"
+	format "44100:16:2"
 }
