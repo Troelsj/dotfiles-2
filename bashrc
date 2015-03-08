@@ -61,7 +61,7 @@ alias x='startx'
 alias reload="source $HOME/.bashrc"
 
 alias mpd="mpd ~/.config/mpd/conf"
-alias pamixer="pamixer --get-volume"
+#alias pamixer="pamixer --get-volume"
 alias cmatrix="cmatrix -alxs"
 
 function export_colors {
@@ -73,4 +73,10 @@ function export_colors {
 		[[ -n $(eval "echo \$COLOR$i") ]] && echo "*color$i: #$(eval "echo \$COLOR$i")" >> ~/.Xcolors
 	done
 	xrdb -merge ~/.Xcolors
+}
+
+function touch {
+	[[ -z "$1" ]] && exit
+	mkdir -p $(dirname $1)
+	$(which touch) "$1"
 }

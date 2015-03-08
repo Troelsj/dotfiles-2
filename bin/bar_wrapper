@@ -7,6 +7,6 @@ bar-aint-recursive \
 	-F \#fff8f8f8 \
 	-B \#ff202020 \
 	-u 2 \
-	-g 1346x20+10+10 \
+	-g 1326x20+20+20 \
 	-f '-*-terminus-medium-r-normal-*-12-*-*-*-c-*-*-u' \
 	"$@"

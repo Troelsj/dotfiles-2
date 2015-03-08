@@ -9,6 +9,6 @@ do
 		volume) pamixer --toggle-mute ;;
 		layout) xkb-switch --next ;;
 		 [1-5]) bspc desktop -f ^$cmd ;;
-		     *) $cmd ;;
+		     *) bspc desktop -f $cmd ;;
 	esac
 done

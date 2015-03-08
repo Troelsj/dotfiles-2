@@ -88,3 +88,23 @@ set secure
 " Hooray, bindings!!!
 "noremap : ;
 "noremap ; :
+
+" Vundle
+
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+filetype plugin on
+
+	Plugin 'gmarik/Vundle.vim'
+	Plugin 'https://github.com/mhinz/vim-startify'
+
+call vundle#end()
+
+let g:startify_bookmarks = ['~/Projects/JLKCollections', '~/Projects/Messenger']
+"let g:startify_change_to_vcs_root = 1
+let g:rooter_patterns = ['.git', '.git/']
+let g:startify_change_to_dir = 0
+let g:startify_files_number = 5
