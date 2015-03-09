@@ -7,11 +7,23 @@
 
 export PS1=" \[\e[00;37m\]\w\[\e[0m\] "
 
+prompt () {
+	_ERR=$?
+	_UID=$(id -u)
+	_JOB=$(jobs | wc -l)
+
+	[ $_UID -eq 0 ] && echo -n '[31m━' || echo -n '[30m─'
+	[ $_JOB -ne 0 ] && echo -n '[32m─' || echo -n '[30m─'
+	[ $_ERR -ne 0 ] && echo -n '[33m─' || echo -n '[30m─'
+	
+	echo -n '[0m'
+}
+
 function selectps {
 	[[ -z "$1" ]] && exit
 	case "$1" in
 		'---')
-			export PS1=" \[\e[01;34m\]---\[\e[0m\] " ;;
+			export PS1=' $(prompt) ' ;;
 		'pwd')
 			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
 		'def')
@@ -80,3 +92,5 @@ function touch {
 	mkdir -p $(dirname $1)
 	$(which touch) "$1"
 }
+
+selectps '---'

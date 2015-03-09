@@ -1,3 +1,4 @@
+! b
 ! ~/.Xresources
 !
 ! by Ivan Sokolov
@@ -13,8 +14,8 @@
 *underlineURLs: true
 
 ! Font
-XTerm*font:     -*-ohsnap-medium-*-*-*-14-*-*-*-*-*-*-*
-XTerm*boldFont: -*-ohsnap-medium-*-*-*-14-*-*-*-*-*-*-*
+XTerm*font:     -*-lemon-*-*-*-10-*-*-*-*-*-*-*
+XTerm*boldFont: -*-lemon-*-*-*-10-*-*-*-*-*-*-*
 URxvt*font:     -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
 URxvt*boldFont: -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
 *letterSpace:   0

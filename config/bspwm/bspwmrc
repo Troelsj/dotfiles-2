@@ -3,13 +3,13 @@
 # BSPWM config file
 # by Ivan Sokolov
 
-bspc config border_width 3
+bspc config border_width 0
 bspc config window_gap   10
 
-bspc config top_padding    10
-bspc config right_padding  10
-bspc config bottom_padding 10
-bspc config left_padding   10
+bspc config top_padding    15
+bspc config right_padding  5
+bspc config bottom_padding 5
+bspc config left_padding   5
 
 bspc monitor -d web rest
 
