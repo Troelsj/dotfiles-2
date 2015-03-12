@@ -2,21 +2,19 @@
 #
 # by Ivan Sokolov
 
-# If not running interactively, don't do anything
+# If not running interactively, don't do anything 
 [[ $- != *i* ]] && return
 
-export PS1=" \[\e[00;37m\]\w\[\e[0m\] "
+export PS1=" [00;37m\]\w[0m\] "
 
 prompt () {
 	_ERR=$?
 	_UID=$(id -u)
 	_JOB=$(jobs | wc -l)
 
-	[ $_UID -eq 0 ] && echo -n '[31m━' || echo -n '[30m─'
-	[ $_JOB -ne 0 ] && echo -n '[32m─' || echo -n '[30m─'
-	[ $_ERR -ne 0 ] && echo -n '[33m─' || echo -n '[30m─'
-	
-	echo -n '[0m'
+	[ $_UID -eq 0 ] && echo -n "[31m━[0m" || echo -n "[30m─[0m"
+	[ $_JOB -ne 0 ] && echo -n "[32m─[0m" || echo -n "[30m─[0m"
+	[ $_ERR -ne 0 ] && echo -n "[33m─[0m" || echo -n "[30m─[0m"
 }
 
 function selectps {
@@ -33,6 +31,7 @@ function selectps {
 		    *)
 		    export PS1="$1" ;;
 	esac
+	echo "$1" > ~/.ps1
 }
 
 export HISTCONTROL=ignoreboth:erasedups
@@ -93,4 +92,4 @@ function touch {
 	$(which touch) "$1"
 }
 
-selectps '---'
+[[ -f ~/.ps1 ]] && selectps $(cat ~/.ps1) || selectps 'pwd'

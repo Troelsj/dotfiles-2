@@ -108,3 +108,27 @@ let g:startify_bookmarks = ['~/Projects/JLKCollections', '~/Projects/Messenger']
 let g:rooter_patterns = ['.git', '.git/']
 let g:startify_change_to_dir = 0
 let g:startify_files_number = 5
+
+set cinoptions+=j1
+
+let java_comment_strings=1
+"let java_highlight_java_lang_ids=1
+
+let java_mark_braces_in_parens_as_errors=1
+"let java_highlight_all=1
+let java_highlight_debug=1
+let java_ignore_javadoc=1
+let java_highlight_java_lang_ids=1
+"let java_highlight_functions="style"
+let java_minlines = 150
+
+"set foldmethod=syntax
+"set foldenable
+"syn region foldBraces start=/{/ end=/}/ transparent fold
+"syn region foldJavadoc start=,/\*\*, end=,\*/, transparent fold keepend
+
+"syntax clear javaBraces
+"syntax clear javaDocComment
+
+"syn region javaBraces start="{" end="}" transparent fold
+"syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold

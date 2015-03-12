@@ -1,7 +1,4 @@
-! b
 ! ~/.Xresources
-!
-! by Ivan Sokolov
 
 ! Scrollbar
 *scrollBar:         false
@@ -16,8 +13,8 @@
 ! Font
 XTerm*font:     -*-lemon-*-*-*-10-*-*-*-*-*-*-*
 XTerm*boldFont: -*-lemon-*-*-*-10-*-*-*-*-*-*-*
-URxvt*font:     -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
-URxvt*boldFont: -*-uushi-*-*-*-*-11-*-*-*-*-*-*-*
+URxvt*font:     -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+URxvt*boldFont: -*-uushi-*-*-*-11-*-*-*-*-*-*-*
 *letterSpace:   0
 
 URxvt*keysym.Home: \033[1~

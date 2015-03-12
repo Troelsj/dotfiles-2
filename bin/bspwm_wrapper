@@ -1,6 +1,0 @@
-#!/bin/bash
-#
-# BSPWM wrapper
-#
-
-bspwm -c ~/.config/bspwm/bspwmrc

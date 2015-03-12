@@ -5,7 +5,7 @@
 
 bar-aint-recursive \
 	-F \#fff8f8f8 \
-	-B \#00000000 \
+	-B \#40ffffff \
 	-u 2 \
 	-g 1366x20+0+0 \
 	-f '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \

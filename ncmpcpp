@@ -15,9 +15,9 @@ cyclic_scrolling = "yes"
 jump_to_now_playing_song_at_start = "yes"
 
 song_status_format = "$7%t$9 $8by$9 $6%a$9"
-song_list_format = "{$6 %a $9$1::$9$5 %b $9$1::$9$7 %t $9$R$3 %n $1::$9 %l $9}|{$8 %f$9}"
-now_playing_prefix = "$8 >> $9$b"
-now_playing_suffix = "$/b$8 << $9"
+song_list_format = "{$6 %a $9$1>>$9$7 %t $9$R$3 %n $1<<$9 %l $9}|{$8 %f$9}"
+now_playing_prefix = "$b"
+now_playing_suffix = "$/b"
 progressbar_look = "─╼─"
 
 playlist_display_mode = classic
