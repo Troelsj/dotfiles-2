@@ -2,6 +2,7 @@
 "
 " by Ivan Sokolov
 
+" Vi Improved setting instead Vi settings
 set nocompatible
 
 set title
