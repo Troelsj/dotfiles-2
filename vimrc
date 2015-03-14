@@ -2,28 +2,63 @@
 "
 " by Ivan Sokolov
 
-" Vi Improved setting instead Vi settings
+" Vi -> Vim
 set nocompatible
+
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+	Plugin 'gmarik/Vundle.vim'
+	Plugin 'scrooloose/syntastic'
+	Plugin 'Raimondi/delimitMate'
+
+call vundle#end()
+
+filetype plugin indent on
+
+" -- Geeneral settings ---
+set backspace=indent,eol,start
+set ruler
+set number
+set showcmd
+
+syntax on
+
+set mouse=a
+
+set background=dark
+colorscheme jellybeans
+
+let g:syntastic_error_symbol = 'x'
+let g:syntastic_warning_symbol = '*'
+augroup mySyntastic
+	au!
+	au FileType java let b:syntastic_mode = 'passive'
+augroup END
+" ---
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_w = 1
+
+" delimitMate
+let delimitMate_expand_cr = 1
+augroup myDelimitMate
+	au!
+	au FileType java let b:delimitMate_quotes = ['"', "'"]
+	au FileType java let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
+augroup END
 
 set title
 set hidden
 
-" Numbers
-set number
-"set numberwidth=4
-set ruler
-
-syntax enable
 set nomodeline
-set backspace=indent,eol,start " Backspace will delete EOL chars, as well as indents
-set matchpairs+=<:>            " For characters that forms pairs for using % commands, this is for HTML Tags
 set iskeyword+=_,$,@,%,#       " Keywords are use to searching and recognized with many commands
 set history=1000
 set undolevels=1000
 set updatetime=1500
 set confirm
-
-set mouse=a
 
 " Disable all bells"
 set noerrorbells visualbell t_vb=
@@ -80,8 +115,6 @@ set noexpandtab
 set splitbelow
 set splitright
 
-colorscheme jellybeans
-
 " Also use local .vimrc
 set exrc
 set secure
@@ -89,26 +122,6 @@ set secure
 " Hooray, bindings!!!
 "noremap : ;
 "noremap ; :
-
-" Vundle
-
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-filetype plugin on
-
-	Plugin 'gmarik/Vundle.vim'
-	Plugin 'https://github.com/mhinz/vim-startify'
-
-call vundle#end()
-
-let g:startify_bookmarks = ['~/Projects/JLKCollections', '~/Projects/Messenger']
-"let g:startify_change_to_vcs_root = 1
-let g:rooter_patterns = ['.git', '.git/']
-let g:startify_change_to_dir = 0
-let g:startify_files_number = 5
 
 set cinoptions+=j1
 
