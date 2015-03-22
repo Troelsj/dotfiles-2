@@ -12,7 +12,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 	Plugin 'gmarik/Vundle.vim'
-	Plugin 'scrooloose/syntastic'
 	Plugin 'Raimondi/delimitMate'
 
 call vundle#end()
@@ -31,16 +30,6 @@ set mouse=a
 
 set background=dark
 colorscheme jellybeans
-
-let g:syntastic_error_symbol = 'x'
-let g:syntastic_warning_symbol = '*'
-augroup mySyntastic
-	au!
-	au FileType java let b:syntastic_mode = 'passive'
-augroup END
-" ---
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_w = 1
 
 " delimitMate
 let delimitMate_expand_cr = 1
@@ -126,13 +115,11 @@ set secure
 set cinoptions+=j1
 
 let java_comment_strings=1
-"let java_highlight_java_lang_ids=1
-
 let java_mark_braces_in_parens_as_errors=1
 "let java_highlight_all=1
 let java_highlight_debug=1
-let java_ignore_javadoc=1
-let java_highlight_java_lang_ids=1
+"let java_ignore_javadoc=1
+"let java_highlight_java_lang_ids=1
 "let java_highlight_functions="style"
 let java_minlines = 150
 

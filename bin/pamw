@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# pamixer wrapper
+
+usage() {
+	echo "Usage: $(basename $0)	-g --get"
+	echo " 	 	-s --set VALUE"
+	echo " 	 	-i --inc PERCENTS"
+	echo " 	 	-d --dec PERCENTS"
+}
+
+get() {
+	pamixer --get-volume
+}
+
+set() {
+	[[ -z "$1" ]] && pamixer --set-volume "$1"
+}
+
+inc() {
+	[[ -z "$1" ]] && pamixer --increase "$1"
+}
+
+dec() {
+	[[ -z "$1" ]] && pamixer --decrease "$1"
+}
+
+case $# in
+	0) get ;;
+	1) case "$1" in
+		'-g','--get') get ;;
+		           *) usage ;;
+	esac ;;
+	2) case "$1" in
+		'-s','--set') set "$2" ;;
+		'-i','--inc') inc "$2" ;;
+		'-d','--dec') dec "$2" ;;
+		           *) usage ;;
+	esac ;;
+	*) usage ;;
+esac

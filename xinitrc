@@ -27,5 +27,5 @@ xset s off
 xsetroot -cursor_name left_ptr
 
 sxhkd -f 100 &
-compton -cb &
+compton -cb
 bspwm

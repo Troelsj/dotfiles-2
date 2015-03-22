@@ -52,13 +52,12 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias cp='cp -r'
-#alias rm='rm -rf'
-alias rm='mv -t ~/.Thrash'
+alias rm='rm -rf'
 alias mkdir='mkdir -p'
 alias tree='tree -C'
 alias free='free -m'
 
-alias date='date -u'
+#alias date='date -u'
 
 alias x='startx'
 
@@ -71,10 +70,6 @@ alias x='startx'
 #alias cd..='cd ..'
 
 alias reload="source $HOME/.bashrc"
-
-alias mpd="mpd ~/.config/mpd/conf"
-#alias pamixer="pamixer --get-volume"
-alias cmatrix="cmatrix -alxs"
 
 function export_colors {
 	echo '' > ~/.Xcolors

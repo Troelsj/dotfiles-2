@@ -1,40 +1,47 @@
 #!/bin/bash
 #
-# SXHKD config file
-# by Ivan Sokolov
+# sxhkdrc by Ivan Sokolov
 
-#####################
-#####################
-##                 ##
-##  BSPWM hotkeys  ##
-##                 ##
-#####################
-#####################
+# Hotkeys for bspwm
 
 # Quit
-super + Escape
-	pamixer --get-volume > ~/.volume && bspc quit
+super + alt + Escape
+	pamixer --get-volume > ~/.volume; \
+	bspc quit
 
-###########
-#         #
-# Windows #
-#         #
-###########
+# Windows #################################################
 
 # Balance tree
 super + b
-	bspc desktop -B
+	bspc desktop -B 
 
-# Change windows params
-super + {g,f,s,z}
-	bspc window -t {floating,fullscreen,sticky,locked}
+# Toggle windows params
+super + {q, w, e, r, t, y}
+	bspc window -t {floating,fullscreen,pseudo_tiled,locked,sticky,private}
 
 # Close window
 alt + w
 	bspc window -c
 
-super + {_,shift +,ctrl +}{h,j,k,l}
-	bspc window -{f,s,p} {left,down,up,right}
+# Move focus
+super + {h,j,k,l}
+	bspc window -f {left,down,up,right}
+
+# Swap windows
+super + shift + {h,j,k,l}
+	bspc window -s {left,down,up,right}
+
+# Presel
+super + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
+
+# Move to prev\next desktop
+super + alt + {h,l}
+	bspc window -d {prev,next}
+
+# Move to prev\next monitor
+super + alt + {j,k}
+	bspc window -m {prev,next}
 
 # Mirror and flip leaves of tree
 super + {comma,period}
@@ -44,20 +51,12 @@ super + {comma,period}
 super + shift + {comma,period}
 	bspc desktop -R {90,270}
 
-############
-#          #
-# Desktops #
-#          #
-############
+# Desktops ################################################
 
 super + {1-9}
 	bspc desktop -f ^{1-9}
 
-#########
-#       #
-# Mouse #
-#       #
-#########
+# Mouse ###################################################
 
 ~button1
 	bspc pointer -g focus
@@ -71,11 +70,7 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-################
-#              #
-# Applications #
-#              #
-################
+# Applications ############################################
 
 # URxvt
 super + Return
@@ -88,18 +83,21 @@ super + alt + Return
 super + space
 	dmenu_wrapper
 
-# Reload SXHKD
-super + r
+# Reload sxhkd
+super + Escape
 	pkill -USR1 -x sxhkd
 
+# Fn's
 XF86AudioLowerVolume
-	pamixer --decrease 5
+	pamw -d 5
 
 XF86AudioRaiseVolume
-	pamixer --increase 5
+	pamw -i 5
 
 XF86MonBrightnessDown
-	xbacklight -dec 10
+	xbacklight -dec 10 -time 500 -steps 50; \
+	sleep 0.75s
 
 XF86MonBrightnessUp
-	xbacklight -inc 10
+	xbacklight -inc 10 -time 500 -steps 50; \
+	sleep 0.75s
