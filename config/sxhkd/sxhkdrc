@@ -15,12 +15,12 @@ super + alt + Escape
 super + b
 	bspc desktop -B 
 
-# Toggle windows params
+# Toggle windows state
 super + {q, w, e, r, t, y}
 	bspc window -t {floating,fullscreen,pseudo_tiled,locked,sticky,private}
 
 # Close window
-alt + w
+super + grave
 	bspc window -c
 
 # Move focus
@@ -89,10 +89,10 @@ super + Escape
 
 # Fn's
 XF86AudioLowerVolume
-	pamw -d 5
+	pamixer --decrease 5
 
 XF86AudioRaiseVolume
-	pamw -i 5
+	pamixer --increase 5
 
 XF86MonBrightnessDown
 	xbacklight -dec 10 -time 500 -steps 50; \
@@ -101,3 +101,19 @@ XF86MonBrightnessDown
 XF86MonBrightnessUp
 	xbacklight -inc 10 -time 500 -steps 50; \
 	sleep 0.75s
+
+XF86AudioNext
+	mpc next
+
+XF86AudioPrev
+	mpc prev
+
+# Not working
+#XF86AudioPause 
+#	mpc pause
+
+XF86AudioPlay 
+	mpc toggle
+
+XF86AudioStop
+	mpc stop

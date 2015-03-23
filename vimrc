@@ -28,7 +28,7 @@ syntax on
 
 set mouse=a
 
-set background=dark
+"set background=dark
 colorscheme jellybeans
 
 " delimitMate
@@ -133,3 +133,5 @@ let java_minlines = 150
 
 "syn region javaBraces start="{" end="}" transparent fold
 "syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
+
+set whichwrap=b,s,<,>,[,]

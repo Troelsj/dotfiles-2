@@ -27,15 +27,19 @@ dec() {
 
 case $# in
 	0) get ;;
-	1) case "$1" in
-		'-g','--get') get ;;
-		           *) usage ;;
-	esac ;;
-	2) case "$1" in
-		'-s','--set') set "$2" ;;
-		'-i','--inc') inc "$2" ;;
-		'-d','--dec') dec "$2" ;;
-		           *) usage ;;
-	esac ;;
+	1)
+		case "$1" in
+			"-g"|"--get") get ;;
+			           *) usage ;;
+		esac
+		;;
+	2)
+		case "$1" in
+			'-s'|'--set') set "$2" ;;
+			'-i'|'--inc') inc "$2" ;;
+			'-d'|'--dec') dec "$2" ;;
+			           *) usage ;;
+		esac
+		;;
 	*) usage ;;
 esac

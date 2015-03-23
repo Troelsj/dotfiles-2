@@ -26,6 +26,8 @@ xset s off
 
 xsetroot -cursor_name left_ptr
 
+mpd ~/.config/mpd/conf
+
 sxhkd -f 100 &
 compton -cb
 bspwm

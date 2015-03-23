@@ -54,7 +54,7 @@ alias egrep='egrep --color=auto'
 alias cp='cp -r'
 alias rm='rm -rf'
 alias mkdir='mkdir -p'
-alias tree='tree -C'
+alias tree='tree -C --dirsfirst'
 alias free='free -m'
 
 #alias date='date -u'
