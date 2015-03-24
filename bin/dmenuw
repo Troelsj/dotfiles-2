@@ -1,15 +1,14 @@
 #!/bin/bash
-#
-# dmenu wrapper
-#
 
 dmenu_run \
+	-i -r -l 5 \
+	-p "Run >" \
+	-x 523 -y 324 \
+	-w 320 -h 20 \
 	-fn '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \
-	-x 433 \
-	-y 384 \
-	-h 20 \
-	-w 500 \
+	-dim 0.7 \
 	-nb \#202020 \
 	-nf \#f8f8f8 \
 	-sb \#404040 \
 	-sf \#ffffff
+
