@@ -5,34 +5,50 @@
 # If not running interactively, don't do anything 
 [[ $- != *i* ]] && return
 
-export PS1=" [00;37m\]\w[0m\] "
-
-prompt () {
+prompt(){
 	_ERR=$?
 	_UID=$(id -u)
 	_JOB=$(jobs | wc -l)
 
-	[ $_UID -eq 0 ] && echo -n "[31m━[0m" || echo -n "[30m─[0m"
-	[ $_JOB -ne 0 ] && echo -n "[32m─[0m" || echo -n "[30m─[0m"
-	[ $_ERR -ne 0 ] && echo -n "[33m─[0m" || echo -n "[30m─[0m"
+	PL=""
+	[ $_UID -eq 0 ] && \
+	PL="\[\033[31m\]─\[\033[0m\]" || \
+	PL="\[\033[30m\]─\[\033[0m\]"
+
+	[ $_JOB -ne 0 ] && \
+	PL="${PL}\[\033[32m\]─\[\033[0m\]" || \
+	PL="${PL}\[\033[30m\]─\[\033[0m\]"
+	
+	[ $_ERR -ne 0 ] && \
+	PL="${PL}\[\033[33m\]─\[\033[0m\]" || \
+	PL="${PL}\[\033[30m\]─\[\033[0m\]"
+	
+	PL=${PL:-"\[\033[30m\]─\[\033[0m\]"}
+	
+	PS1=" "$PL" "
 }
 
-function selectps {
-	[[ -z "$1" ]] && exit
-	case "$1" in
-		'---')
-			export PS1=' $(prompt) ' ;;
-		'pwd')
-			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
-		'def')
-			export PS1='[\u@\h \W]\$ ' ;;
-		'arr')
-			export PS1=" \[\e[01;34m\]-→\[\e[0m\] " ;;
-		    *)
-		    export PS1="$1" ;;
-	esac
-	echo "$1" > ~/.ps1
-}
+PROMPT_COMMAND=prompt
+
+#
+# Deprecated
+#
+#function selectps {
+#	[[ -z "$1" ]] && exit
+#	case "$1" in
+#		'---')
+#			export PS1=' $(prompt) ' ;;
+#		'pwd')
+#			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
+#		'def')
+#			export PS1='[\u@\h \W]\$ ' ;;
+#		'arr')
+#			export PS1=" \[\e[01;34m\]-→\[\e[0m\] " ;;
+#		    *)
+#		    export PS1="$1" ;;
+#	esac
+#	echo "$1" > ~/.ps1
+#}
 
 export HISTCONTROL=ignoreboth:erasedups
 export PATH=$PATH:~/bin/
@@ -57,8 +73,6 @@ alias mkdir='mkdir -p'
 alias tree='tree -C --dirsfirst'
 alias free='free -m'
 
-#alias date='date -u'
-
 alias x='startx'
 
 #alias yaourt\ -Rcsn='yaourt -Rcsn --color always'
@@ -71,21 +85,8 @@ alias x='startx'
 
 alias reload="source $HOME/.bashrc"
 
-function export_colors {
-	echo '' > ~/.Xcolors
-	[[ -n "$FGCOLOR" ]] && echo "*foreground: $FGCOLOR" >> ~/.Xcolors
-	[[ -n "$BGCOLOR" ]] && echo "*background: $BGCOLOR" >> ~/.Xcolors
-	[[ -n "$CURSORCOLOR" ]] && echo "*cursorColor: $CURSORCOLOR" >> ~/.Xcolors	
-	for i in {0..15}; do
-		[[ -n $(eval "echo \$COLOR$i") ]] && echo "*color$i: #$(eval "echo \$COLOR$i")" >> ~/.Xcolors
-	done
-	xrdb -merge ~/.Xcolors
-}
-
 function touch {
 	[[ -z "$1" ]] && exit
 	mkdir -p $(dirname $1)
 	$(which touch) "$1"
 }
-
-[[ -f ~/.ps1 ]] && selectps $(cat ~/.ps1) || selectps 'pwd'
