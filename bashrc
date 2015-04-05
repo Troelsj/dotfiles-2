@@ -23,9 +23,9 @@ prompt(){
 	PL="${PL}\[\033[33m\]─\[\033[0m\]" || \
 	PL="${PL}\[\033[30m\]─\[\033[0m\]"
 	
-	PL=${PL:-"\[\033[30m\]─\[\033[0m\]"}
+	PL=${PL:-"\[\033[30m\]───\[\033[0m\]"}
 	
-	PS1=" "$PL" "
+	PS1=" $PL "
 }
 
 PROMPT_COMMAND=prompt
@@ -51,7 +51,7 @@ PROMPT_COMMAND=prompt
 #}
 
 export HISTCONTROL=ignoreboth:erasedups
-export PATH=$PATH:~/bin/
+export PATH=~/bin/:$PATH
 export EDITOR=vim
 
 # Aliases
@@ -75,8 +75,6 @@ alias free='free -m'
 
 alias x='startx'
 
-#alias yaourt\ -Rcsn='yaourt -Rcsn --color always'
-
 #alias ~='cd ~'
 #alias .='pwd'
 #alias ..='cd ..'
@@ -85,8 +83,5 @@ alias x='startx'
 
 alias reload="source $HOME/.bashrc"
 
-function touch {
-	[[ -z "$1" ]] && exit
-	mkdir -p $(dirname $1)
-	$(which touch) "$1"
-}
+alias vid='vim -u ~/dotdev.vimrc'
+alias vin='vim -u /dev/null'

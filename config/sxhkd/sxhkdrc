@@ -5,22 +5,28 @@
 # Hotkeys for bspwm
 
 # Quit
-super + alt + Escape
+ctrl + alt + Delete
 	pamixer --get-volume > ~/.volume; \
 	bspc quit
+
+# Reload sxhkd
+ctrl + alt + Insert
+	pkill -USR1 -x sxhkd
+
 
 # Windows #################################################
 
 # Balance tree
 super + b
-	bspc desktop -B 
+	bspc desktop -B
 
 # Toggle windows state
-super + {q, w, e, r, t, y}
+super + {q, w, e, a, s, d}
 	bspc window -t {floating,fullscreen,pseudo_tiled,locked,sticky,private}
 
+
 # Close window
-super + grave
+super + Escape
 	bspc window -c
 
 # Move focus
@@ -43,13 +49,12 @@ super + alt + {h,l}
 super + alt + {j,k}
 	bspc window -m {prev,next}
 
-# Mirror and flip leaves of tree
-super + {comma,period}
-	bspc desktop -F {horizontal,vertical}
-
 # Rotate leaves of tree
 super + shift + {comma,period}
 	bspc desktop -R {90,270}
+
+super + alt + {1-9}
+	bspc window -r 0.{1-9}
 
 # Desktops ################################################
 
@@ -81,11 +86,7 @@ super + alt + Return
 
 # dmenu
 super + space
-	dmenu_wrapper
-
-# Reload sxhkd
-super + Escape
-	pkill -USR1 -x sxhkd
+	dmenuw
 
 # Fn's
 XF86AudioLowerVolume
@@ -109,10 +110,10 @@ XF86AudioPrev
 	mpc prev
 
 # Not working
-#XF86AudioPause 
+#XF86AudioPause
 #	mpc pause
 
-XF86AudioPlay 
+XF86AudioPlay
 	mpc toggle
 
 XF86AudioStop

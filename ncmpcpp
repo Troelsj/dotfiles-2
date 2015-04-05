@@ -32,5 +32,5 @@ visualizer_output_name = "ncmpcpp"
 visualizer_in_stereo = "yes"
 #visualizer_sample_multiplier = 10
 visualizer_sync_interval = 1
-visualizer_type = wave
-visualizer_look = "--"
+visualizer_type = spectrum
+visualizer_look = "||"

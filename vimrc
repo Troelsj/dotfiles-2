@@ -2,23 +2,17 @@
 "
 " by Ivan Sokolov
 
-" Vi -> Vim
 set nocompatible
 
 filetype off
-
 set rtp+=~/.vim/bundle/Vundle.vim
-
 call vundle#begin()
-
 	Plugin 'gmarik/Vundle.vim'
 	Plugin 'Raimondi/delimitMate'
-
+	Plugin 'udalov/kotlin-vim'
 call vundle#end()
-
 filetype plugin indent on
 
-" -- Geeneral settings ---
 set backspace=indent,eol,start
 set ruler
 set number
@@ -79,7 +73,6 @@ set sidescrolloff=20
 set lazyredraw       " The screen won't be redrawn unless actions took place
 set cursorline
 set scrolljump=10
-set showcmd
 set ttyfast          " Improves redrawing for newer computers
 set pumheight=10
 set diffopt+=context:3
@@ -114,14 +107,14 @@ set secure
 
 set cinoptions+=j1
 
-let java_comment_strings=1
-let java_mark_braces_in_parens_as_errors=1
+"let java_comment_strings=1
+"let java_mark_braces_in_parens_as_errors=1
 "let java_highlight_all=1
-let java_highlight_debug=1
+"let java_highlight_debug=1
 "let java_ignore_javadoc=1
 "let java_highlight_java_lang_ids=1
 "let java_highlight_functions="style"
-let java_minlines = 150
+"let java_minlines = 150
 
 "set foldmethod=syntax
 "set foldenable

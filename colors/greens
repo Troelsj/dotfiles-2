@@ -1,0 +1,60 @@
+!special
+*background: #0f0f0f
+*foreground: #f8f8f8
+*cursorColor: #a0a0a0
+
+!black
+*color0: #202020
+*color8: #202020
+
+!red
+!*color1: #EAF995
+!*color9: #EAF995
+
+!green
+!*color2: #CFF09E
+!*color10: #CFF09E
+
+!yellow
+!*color3: #A8DBA8
+!*color11: #A8DBA8
+
+!blue
+!*color4: #79BD9A
+!*color12: #79BD9A
+
+!magenta
+!*color5: #3B8686
+!*color13: #3B8686
+
+!cyan
+!*color6: #0B486B
+!*color14: #0B486B
+
+!white
+*color7: #f8f8f8
+*color15: #f8f8f8
+
+!red
+*color1: #EAF995
+*color9: #EAF995
+
+!green
+*color2: #0B486B
+*color10: #0B486B
+
+!yellow
+*color3: #ECFF09
+*color11: #ECFF09
+
+!blue
+*color4: #79BD9A
+*color12: #79BD9A
+
+!magenta
+*color5: #A8DBA8
+*color13: #A8DBA8
+
+!cyan
+*color6: #3B8686
+*color14: #3B8686

@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Wrapper for touch
+
+ORIGIN="/usr/bin/touch"
+
+[[ -z $@ ]] && exit
+
+for i in $@
+do
+	mkdir -p "$(dirname "$i")"
+	$ORIGIN "$i"
+done
