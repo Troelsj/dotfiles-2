@@ -32,4 +32,4 @@ case $1 in
 		exit ;;
 esac
 
-xrdb -query | grep $CC | tail -c 8
+xrdb -query | grep $CC | tail -c 8 # change to 7 if you want color without #
