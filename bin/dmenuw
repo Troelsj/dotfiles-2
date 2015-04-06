@@ -7,8 +7,7 @@ dmenu_run \
 	-w 320 -h 20 \
 	-fn '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \
 	-dim 0.7 \
-	-nb \#202020 \
-	-nf \#f8f8f8 \
-	-sb \#404040 \
-	-sf \#ffffff
-
+	-nb "$(gxc background)" \
+	-nf "$(gxc foreground)" \
+	-sb "$(gxc black)" \
+	-sf "$(gxc white)"

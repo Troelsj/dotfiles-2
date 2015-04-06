@@ -3,8 +3,8 @@
 # BSPWM config file
 # by Ivan Sokolov
 
-bspc config border_width 3
-bspc config window_gap   15
+bspc config border_width 2
+bspc config window_gap   10
 
 bspc config top_padding    10
 bspc config right_padding  10
