@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything 
 [[ $- != *i* ]] && return
 
-prompt(){
+prompt () {
 	_ERR=$?
 	_UID=$(id -u)
 	_JOB=$(jobs | wc -l)
@@ -29,6 +29,12 @@ prompt(){
 }
 
 PROMPT_COMMAND=prompt
+
+#PS1="\[$(tput setaf 4)\]┌─╼ \[$(tput setaf 7)\][\w]\n\[$(tput setaf 4)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 4)\]└────╼\"; else echo \"\[$(tput setaf 4)\]└╼\"; fi) \[$(tput setaf 7)\]"
+
+#PS1=" \[$([ "$(id -u)" -eq 0 ] && tput setaf 1 || tput setaf 0)\]─\[$(tput setaf 7)\]\
+#\[$([ "$(jobs | wc -l)" -ne 0 ] && tput setaf 2 || tput setaf 0)\]─\[$(tput setaf 7)\]\
+#\[$([ "$?" -ne 0 ] && tput setaf 3 || tput setaf 0)\]╼\[$(tput setaf 7)\] "
 
 #
 # Deprecated
