@@ -27,9 +27,9 @@ fext () {
 
 for i in $@
 do
-	if [ -f $1 ]; then
-		fext $1
+	if [ -f $i ]; then
+		fext $i
 	else
-		echo "'$1' is not a valid file!"
+		echo "'$i' is not a valid file!"
 	fi
 done
