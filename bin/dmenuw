@@ -6,7 +6,7 @@ dmenu_run \
 	-x 523 -y 324 \
 	-w 320 -h 20 \
 	-fn '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \
-	-dim 0.7 \
+	-dim 0.5 \
 	-nb "$(gxc background)" \
 	-nf "$(gxc foreground)" \
 	-sb "$(gxc black)" \

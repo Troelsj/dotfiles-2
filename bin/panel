@@ -126,4 +126,4 @@ do
 	printf ' %s \n' "$(A "$(F "*" "ffd00000")" 'bspc quit')$(F ' ]' ff$WHITE)"
 
 	sleep 0.5s
-done | bar-aint-recursive | ~/.config/bspwm/spawner
+done | lemonbar | spawner

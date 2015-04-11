@@ -118,3 +118,7 @@ XF86AudioPlay
 
 XF86AudioStop
 	mpc stop
+
+
+super + grave
+	sysinfo
