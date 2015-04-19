@@ -12,29 +12,25 @@ prompt () {
 
 	PL=""
 	[ $_UID -eq 0 ] && \
-	PL="\[\033[31m\]─\[\033[0m\]" || \
-	PL="\[\033[30m\]─\[\033[0m\]"
+	PL="\[\033[1;31m\]*\[\033[0m\]" || \
+	PL="\[\033[1;30m\]─\[\033[0m\]"
 
 	[ $_JOB -ne 0 ] && \
-	PL="${PL}\[\033[32m\]─\[\033[0m\]" || \
-	PL="${PL}\[\033[30m\]─\[\033[0m\]"
+	PL="${PL}\[\033[1;32m\]*\[\033[0m\]" || \
+	PL="${PL}\[\033[1;30m\]─\[\033[0m\]"
 	
 	[ $_ERR -ne 0 ] && \
-	PL="${PL}\[\033[33m\]─\[\033[0m\]" || \
-	PL="${PL}\[\033[30m\]─\[\033[0m\]"
+	PL="${PL}\[\033[1;33m\]*\[\033[0m\]" || \
+	PL="${PL}\[\033[1;30m\]─\[\033[0m\]"
 	
-	PL=${PL:-"\[\033[30m\]───\[\033[0m\]"}
+	PL=${PL:-"\[\033[1;30m\]───\[\033[0m\]"}
 	
 	PS1=" $PL "
 }
 
 PROMPT_COMMAND=prompt
 
-#PS1="\[$(tput setaf 4)\]┌─╼ \[$(tput setaf 7)\][\w]\n\[$(tput setaf 4)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 4)\]└────╼\"; else echo \"\[$(tput setaf 4)\]└╼\"; fi) \[$(tput setaf 7)\]"
-
-#PS1=" \[$([ "$(id -u)" -eq 0 ] && tput setaf 1 || tput setaf 0)\]─\[$(tput setaf 7)\]\
-#\[$([ "$(jobs | wc -l)" -ne 0 ] && tput setaf 2 || tput setaf 0)\]─\[$(tput setaf 7)\]\
-#\[$([ "$?" -ne 0 ] && tput setaf 3 || tput setaf 0)\]╼\[$(tput setaf 7)\] "
+#PS1=" \[`tput setaf 6`\]┌─╼\[`tput setaf 15`\] \w \[`tput setaf 15`\]\n \[`tput setaf 6`\]└─╼\[`tput setaf 7`\] "
 
 #
 # Deprecated
@@ -91,3 +87,5 @@ alias reload="source $HOME/.bashrc"
 
 alias vid='vim -u ~/dotdev.vimrc'
 alias vin='vim -u /dev/null'
+
+alias pacman="pacman --color always"

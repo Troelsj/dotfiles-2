@@ -23,6 +23,12 @@ xset s off
 
 xsetroot -cursor_name left_ptr
 
+pamixer --set-volume $(cat ~/.volume)
+pamixer --unmute
+
+mpd ~/.config/mpd/conf
+
+dunst &
 sxhkd -f 100 &
-~/.lazy.sh
+compton -cb &
 bspwm

@@ -4,12 +4,12 @@
 # by Ivan Sokolov
 
 bspc config border_width 1
-bspc config window_gap   15
+bspc config window_gap   10
 
-bspc config top_padding    10
-bspc config right_padding  25
-bspc config bottom_padding 10
-bspc config left_padding   25
+bspc config top_padding    0
+bspc config right_padding  10
+bspc config bottom_padding 0
+bspc config left_padding   10
 
 bspc monitor -d web rest
 #bspc desktop web -l monocle
@@ -31,9 +31,9 @@ bspc config focused_locked_border_color $(gxc red)
 bspc config active_locked_border_color  $(gxc boldred)
 bspc config normal_locked_border_color  $(gxc boldred)
 
-bspc config focused_sticky_border_color $(gxc blue)
-bspc config active_sticky_border_color  $(gxc boldblue)
-bspc config normal_sticky_border_color  $(gxc boldblue)
+bspc config focused_sticky_border_color $(gxc boldgreen)
+bspc config active_sticky_border_color  $(gxc green)
+bspc config normal_sticky_border_color  $(gxc green)
 
 bspc config focused_private_border_color $(gxc magenta)
 bspc config active_private_border_color  $(gxc boldmagenta)

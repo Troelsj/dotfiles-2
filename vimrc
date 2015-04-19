@@ -1,10 +1,20 @@
 " ~/.vimrc
-"
-" by Ivan Sokolov
 
+
+if &diff || exists("vimpager")
+
+
+set noloadplugins
+
+
+else
+
+" Vim settings
 set nocompatible
 
+" Plugins set up ----------------------
 filetype off
+
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -14,6 +24,7 @@ call vundle#begin()
 call vundle#end()
 
 filetype plugin indent on
+" End plugins -------------------------
 
 set backspace=indent,eol,start
 set ruler
@@ -24,16 +35,13 @@ syntax on
 
 set mouse=a
 
-"set background=dark
+set background=dark
 colorscheme dotdev
 
 " delimitMate
 let delimitMate_expand_cr = 1
-augroup myDelimitMate
-	au!
-	au FileType java let b:delimitMate_quotes = ['"', "'"]
-	au FileType java let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
-augroup END
+let b:delimitMate_quotes = ['"', "'"]
+let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
 
 set title
 set hidden
@@ -71,10 +79,10 @@ set list listchars=tab:>\ ,trail:^,nbsp:^,extends:>,precedes:< ",eol:~
 
 "set showmatch        " Shows matching brackets when text indicator is over them
 set scrolloff=5      " Show 5 lines of context around the cursor
-set sidescrolloff=20
+set sidescrolloff=5
 set lazyredraw       " The screen won't be redrawn unless actions took place
 set cursorline
-set scrolljump=10
+set scrolljump=1
 set ttyfast          " Improves redrawing for newer computers
 set pumheight=10
 set diffopt+=context:3
@@ -130,6 +138,18 @@ set cinoptions+=j1
 "syn region javaDocComment start="/\*\*" end="\*/" keepend contains=javaCommentTitle,@javaHtml,javaDocTags,javaDocSeeTag,javaTodo,@Spell fold
 
 set whichwrap=b,s,<,>,[,]
+
+set nojoinspaces
+
+set undodir=$HOME/.vim/undo
+set undofile
+set undolevels=10000
+set undoreload=100000
+
+set clipboard=unnamedplus
+
+set listchars=tab:>\ ,trail:·,precedes:«,extends:»
+
 
 " Test the actual colorscheme
 syn match Comment      "\"__Comment.*"
@@ -189,3 +209,6 @@ syn match Visual       "\"__Visual.*"
 "__Underlined           Anything underlined
 "__VertSplit            :vsplit will only show ' | '
 "__Visual               Selected text looks like this
+
+
+endif

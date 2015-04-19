@@ -11,11 +11,17 @@
 *underlineURLs: true
 
 ! Font
-XTerm*font:     -*-lemon-*-*-*-10-*-*-*-*-*-*-*
-XTerm*boldFont: -*-lemon-*-*-*-10-*-*-*-*-*-*-*
-URxvt*font:     -*-uushi-*-*-*-11-*-*-*-*-*-*-*
-URxvt*boldFont: -*-uushi-*-*-*-11-*-*-*-*-*-*-*
-*letterSpace:   0
+XTerm*font:       -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
+XTerm*boldFont:   -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
+XTerm*italicFont: -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
+XTerm*letterSpace: -1
+URxvt*font:       -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+URxvt*boldFont:   -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+URxvt*italicFont: -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+URxvt*letterSpace: 0
+!URxvt*font:       -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
+!URxvt*boldFont:   -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
+!URxvt*italicFont: -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
 
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End:  \033[4~
@@ -24,4 +30,4 @@ URxvt*keysym.End:  \033[4~
 !URxvt.colorBD: _1
 !URxvt.colorUL: _2
 
-#include "Projects/dotfiles/xcolors/dotdev"
+#include "Projects/dotfiles/xcolors/infrared"

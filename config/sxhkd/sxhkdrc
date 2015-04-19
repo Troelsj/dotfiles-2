@@ -88,6 +88,10 @@ super + alt + Return
 super + space
 	dmenuw
 
+# termspawn
+super + alt + space
+	termspawn
+
 # Fn's
 XF86AudioLowerVolume
 	pamixer --decrease 5
@@ -96,12 +100,12 @@ XF86AudioRaiseVolume
 	pamixer --increase 5
 
 XF86MonBrightnessDown
-	xbacklight -dec 10 -time 500 -steps 50; \
-	sleep 0.75s
+	xbacklight -dec 10 -time 0 -steps 0; \
+	sleep 0.5s
 
 XF86MonBrightnessUp
-	xbacklight -inc 10 -time 500 -steps 50; \
-	sleep 0.75s
+	xbacklight -inc 10 -time 0 -steps 0; \
+	sleep 0.5s
 
 XF86AudioNext
 	mpc next
