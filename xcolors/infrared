@@ -1,0 +1,42 @@
+! infrared - sirikid
+
+#define WHITE0 #f0f0f0
+#define WHITE1 #c0c0c0
+#define BLACK0 #000000
+#define BLACK1 #0f0f0f
+
+*background: BLACK1
+*foreground: WHITE1
+*cursorColor: WHITE0
+
+! black
+*color0: BLACK1
+*color8: #1f1f1f
+
+! red
+*color1: #772211
+*color9: #885544
+
+! green
+*color2: #446655
+*color10: #668877
+
+! yellow
+*color3: #665544
+*color11: #887766
+
+! blue
+*color4: #446688
+*color12: #99bbcc
+
+! magenta
+*color5: #774455
+*color13: #997788
+
+! cyan
+*color6: #6699aa
+*color14: #ccddee
+
+! white
+*color7: WHITE1
+*color15: WHITE0

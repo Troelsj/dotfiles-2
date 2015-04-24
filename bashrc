@@ -52,10 +52,6 @@ PROMPT_COMMAND=prompt
 #	echo "$1" > ~/.ps1
 #}
 
-export HISTCONTROL=ignoreboth:erasedups
-export PATH=~/bin/:$PATH
-export EDITOR=vim
-
 # Aliases
 
 alias ls='ls --color=auto'

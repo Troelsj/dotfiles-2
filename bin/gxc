@@ -2,11 +2,23 @@
 #
 # Get X Color
 
-[[ -z "$1" ]] && exit
+ID=
+SHARP=
+ALPHA=
+
+for i in $@; do
+	case $i in
+		'-#'|'--sharp') SHARP='#';;
+		'-a'|'--SHARP') ALPHA='ff' ;;
+		*) ID=$i ;;
+	esac
+done
+
+[[ -z $ID ]] && exit
 
 CC='color'
 
-case $1 in
+case $ID in
 	bla|black)   CC="${CC}0" ;;
 	red)         CC="${CC}1" ;;
 	gre|green)   CC="${CC}2" ;;
@@ -32,4 +44,4 @@ case $1 in
 		exit ;;
 esac
 
-xrdb -query | grep $CC | tail -c 8 # change to 7 if you want color without #
+echo "$SHARP$ALPHA`xrdb -query | grep "$CC:" | tail -c 7`"

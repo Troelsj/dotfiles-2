@@ -11,9 +11,9 @@
 *underlineURLs: true
 
 ! Font
-XTerm*font:       -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
-XTerm*boldFont:   -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
-XTerm*italicFont: -*-terminus-medium-*-*-12-*-*-*-*-*-*-5
+XTerm*font:       -*-clean-medium-*-*-14-*-*-*-*-*-*-*
+XTerm*boldFont:   -*-clean-medium-*-*-14-*-*-*-*-*-*-*
+XTerm*italicFont: -*-clean-medium-*-*-14-*-*-*-*-*-*-*
 XTerm*letterSpace: -1
 URxvt*font:       -*-uushi-*-*-*-11-*-*-*-*-*-*-*
 URxvt*boldFont:   -*-uushi-*-*-*-11-*-*-*-*-*-*-*
@@ -30,4 +30,4 @@ URxvt*keysym.End:  \033[4~
 !URxvt.colorBD: _1
 !URxvt.colorUL: _2
 
-#include "Projects/dotfiles/xcolors/infrared"
+#include "Projects/dotfiles/xcolors/test"

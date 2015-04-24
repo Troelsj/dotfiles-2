@@ -1,17 +1,12 @@
 #!/bin/bash
 #
-# Bar Ain't Recursive panel
 # by Ivan Sokolov
-#
-# Final version, 21.02.15
-#
 
-WHITE=f8f8f8
-# WHITE=202020
-RED=a54242
-GREEN=8c9440
-BLACK=202020
-GRAY=404040
+WHITE=`gxc -a white`
+RED=`gxc -a red`
+GREEN=`gxc -a green`
+BLACK=`gxc -a black`
+GRAY=`gxc -a bbla`
 
 function A {
 	echo -n "%{A:$2:}$1%{A}"
@@ -35,31 +30,31 @@ function u {
 
 ###
 
-DIV=$(F '][' ff$WHITE)
+DIV=$(F '|' $GRAY)
 
 ###
 
 network() {
-	ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo -n $(F + ff00d000) || echo -n $(F - ffd00000)
+	ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo -n $(F + $GREEN) || echo -n $(F - $RED)
 }
 
 calendar() {
 	DATE=$(date -u +%d/%m/%y)
-	echo -n $(F $DATE ff$WHITE)
+	echo -n $(F $DATE $WHITE)
 }
 
 clock() {
 	TIME=$(date -u +%H:%M)
-	echo -n $(F $TIME ff$WHITE)
+	echo -n $(F $TIME $WHITE)
 }
 
 volume() {
-	VOLUME=$(pamixer --get-volume)
-	if [[ $(pamixer --get-mute) -eq 'true' ]]
+	VOLUME=$(pamw --get)
+	if [[ $(pamw --gm) -eq 'true' ]]
 	then
-		VCOLOR=ff$WHITE
+		VCOLOR=$WHITE
 	else
-		VCOLOR=ff$GRAY
+		VCOLOR=$GRAY
 	fi
 	echo -n "$(A $(F $VOLUME $VCOLOR) volume)"
 }
@@ -68,23 +63,23 @@ battery() {
 	BATTERY=$(acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g')
 	if [[ $BATTERY -gt 20 ]]
 	then
-		BCOLOR=ff$WHITE
+		BCOLOR=$WHITE
 	else
-		BCOLOR=ff$RED
+		BCOLOR=$RED
 	fi
 	echo -n $(F $BATTERY $BCOLOR)
 }
 
 layout() {
-	echo -n "$(A $(F $(xkb-switch) ff$WHITE) layout)"
+	echo -n "$(A $(F $(xkb-switch) $WHITE) layout)"
 }
 
 mpc_status() {
 	if [[ -n $(mpc | grep playing) ]]
 	then
-		echo -n "$(F "$(mpc current -f "[%title%]")" ff$WHITE) $DIV "
-		echo -n "$(F "$(mpc current -f "[%album%]")" ff$WHITE) $DIV "
-		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" ff$WHITE) "
+		echo -n "$(F "$(mpc current -f "[%title%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%album%]")" $WHITE) $DIV "
+		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $WHITE) "
 	else
 		echo -n ''
 	fi
@@ -95,14 +90,17 @@ mpc_controls() {
 	echo -n ''
 }
 
-SPACER=$(F '--' 00$BLACK)
+SPACER=$(F '--' $BLACK)
 
 desktops() {
 	for i in $(bspc query -D | tr "\n" " ")
 	do
-		printf '%s' "%{A:$i:}$SPACER$(F $i ff$WHITE)$SPACER%{A}"
+		printf '%s' "%{A:$i:}$SPACER$(F $i $WHITE)$SPACER%{A}"
 	done
 }
+
+_TOP_PADDING=`bspc config top_padding`
+bspc config top_padding 30
 
 while true
 do
@@ -116,14 +114,21 @@ do
 	#printf '%s' "$(mpc_controls)"
 	
 	# Right
-	printf '%s' "%{r}$(F '[' ff$WHITE)"
+	printf '%s' "%{r}"
 	printf ' %s' $(network) $DIV 
 	printf ' %s' $(layout) $DIV
 	printf ' %s' $(volume) $DIV 
 	#printf ' %s' $(battery) $DIV 
 	printf ' %s' $(clock)
 	printf ' %s' $(calendar) $DIV
-	printf ' %s \n' "$(A "$(F "*" "ffd00000")" 'bspc quit')$(F ' ]' ff$WHITE)"
+	printf ' %s \n' "$(A "$(F x $RED)" 'bspc quit') "
 
 	sleep 0.5s
-done | lemonbar | spawner
+ done | lemonbar \
+	-g 1346x20+10+10 \
+	-B $BLACK \
+	-F $WHITE \
+	-f -*-uushi-*-*-*-11-*-*-*-*-*-*-* \
+	| spawner
+
+bspc config top_padding $_TOP_PADDING
