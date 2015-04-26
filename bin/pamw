@@ -1,44 +1,60 @@
 #!/bin/bash
 
 usage() {
-	echo "Usage: $(basename $0) <command>"
-	echo " -g --get		Get volume"
-	echo " -s --set VALUE		Set volume"
-	echo " -i --inc PERCENTS	Increase volume"
-	echo " -d --dec PERCENTS	Decrease volume"
-	echo " --gm			Get mute"
-	echo " -t --tog		Toggle mute"
-	echo " -u -unm		Unmute"
-	echo " -m --mut		Mute"
+	cat <<EOF
+pamw options:
+  -h --help             show this help
+  -g --get              get volume
+  -s --set VALUE        set volume
+  -i --inc PERCENTS     increase volume
+  -d --dec PERCENTS     decrease volume
+  --gm                  get mute
+  -t --tog              toggle mute
+  -u -unm               unmute
+  -m --mut              mute
+EOF
 }
 if [[ -z $1 ]]; then
 	pamw -g
 else
 	case $1 in
+		'-h'|'--help')
+			usage ;;
 		'-s'|'--set')
-			[[ -n $2 ]] && pamixer --set-volume $2 || echo "missing argument"
+			if [[ -n $2 ]]
+			then
+				pamixer --set-volume $2
+			else
+				echo 'missing argument'
+			fi
 			;;
 		'-g'|'--get')
-			pamixer --get-volume
-			;;
+			pamixer --get-volume ;;
 		'-i'|'--inc')
-			[[ -n $2 ]] && pamixer --increase $2 || echo "missing argument"
+			if [[ -n $2 ]]
+			then
+				pamixer --increase $2
+			else
+				echo 'missing argument'
+			fi
 			;;
 		'-d'|'--dec')
-			[[ -n $2 ]] && pamixer --decrease $2 || echo "missing argument"
+			if [[ -n $2 ]]
+			then
+				pamixer --decrease $2
+			else
+				echo 'missing argument'
+			fi
 			;;
 		'--gm')
-			pamixer --get-mute
-			;;
-		'-t'|'--tog')
-			pamixer --toggle-mute
-			;;
-		'-u'|'--unm')
-			pamixer --unmute
-			;;
-		'-m'|'--mut')
-			pamixer --mute
-			;;
-		*) usage ;;
+			pamixer --get-mute ;;
+		'-t')
+			pamixer --toggle-mute ;;
+		'-u')
+			pamixer --unmute ;;
+		'-m')
+			pamixer --mute ;;
+		*)
+			usage ;;
 	esac
 fi

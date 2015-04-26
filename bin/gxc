@@ -2,23 +2,23 @@
 #
 # Get X Color
 
-ID=
-SHARP=
-ALPHA=
+usage () {
+	cat <<EOF
+usage: `basename $0` <id> [prefix]
+  id = [Bold](BLAck|RED|GREen|YELlow|BLUe|MAGenta|CYAn|WHIte)
+  or (BackGround|ForeGround|ITalic|UnderLine)
+EOF
+	exit
+}
 
-for i in $@; do
-	case $i in
-		'-#'|'--sharp') SHARP='#';;
-		'-a'|'--SHARP') ALPHA='ff' ;;
-		*) ID=$i ;;
-	esac
-done
+PREFIX=
 
-[[ -z $ID ]] && exit
+[[ -n $1 ]] || usage
+[[ -n $2 ]] && PREFIX=$2
 
 CC='color'
 
-case $ID in
+case $1 in
 	bla|black)   CC="${CC}0" ;;
 	red)         CC="${CC}1" ;;
 	gre|green)   CC="${CC}2" ;;
@@ -39,9 +39,7 @@ case $ID in
 	fg|foreground) CC='foreground' ;;
 	it|italic)     CC="${CC}IT" ;;
 	ul|underline)  CC="${CC}UL" ;;
-	*)
-		echo 'invalid color id'
-		exit ;;
+	*) usage ;;
 esac
 
-echo "$SHARP$ALPHA`xrdb -query | grep "$CC:" | tail -c 7`"
+echo "$PREFIX`xrdb -query | grep "$CC:" | tail -c 7`"

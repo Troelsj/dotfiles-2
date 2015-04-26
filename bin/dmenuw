@@ -9,7 +9,7 @@ dmenu_run \
 	-w 320 -h 20 \
 	-fn '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \
 	-dim 0.5 \
-	-nb "$(gxc -# black)" \
-	-nf "$(gxc -# white)" \
-	-sb "$(gxc -# boldblack)" \
-	-sf "$(gxc -# boldwhite)"
+	-nb $(gxc black \#) \
+	-nf $(gxc white \#) \
+	-sb $(gxc boldblack \#) \
+	-sf $(gxc boldwhite \#)

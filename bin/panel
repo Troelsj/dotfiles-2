@@ -1,69 +1,63 @@
 #!/bin/bash
-#
-# by Ivan Sokolov
 
-WHITE=`gxc -a white`
-RED=`gxc -a red`
-GREEN=`gxc -a green`
-BLACK=`gxc -a black`
-GRAY=`gxc -a bbla`
+FG=$(gxc fg ff)
+RED=$(gxc red ff)
+GREEN=$(gxc boldgreen ff)
+BG=$(gxc bg ff)
+GRAY=$(gxc boldblack ff)
 
+# Clickable area
 function A {
-	echo -n "%{A:$2:}$1%{A}"
+	[[ -n $2 ]] && echo -n "%{A:$2:}${1}%{A}"
 }
 
+# Background color
 function B {
-	echo -n "%{B#$2}$1%{B-}"
+	[[ -n $2 ]] && echo -n "%{B#$2}${1}%{B-}"
 }
 
+# Foreground color
 function F {
-	echo -n "%{F#$2}$1%{F-}"
+	[[ -n $2 ]] && echo -n "%{F#$2}${1}%{F-}"
 }
 
+# Overlined (?) text
 function o {
-	echo -n "%{+o}$1%{-o}"
+	[[ -n $1 ]] && echo -n "%{+o}${1}%{-o}"
 }
 
+# Underlined text
 function u {
-	echo -n "%{+u}$1%{-u}"
+	[[ -n $1 ]] && echo -n "%{+u}${1}%{-u}"
 }
 
 ###
 
-DIV=$(F '|' $GRAY)
+DIV=$(F \| $GRAY)
+SPACER=$(F -- $BG)
 
 ###
 
 network() {
-	ping -c 1 8.8.8.8 >/dev/null 2>&1 && echo -n $(F + $GREEN) || echo -n $(F - $RED)
+	ping -c 1 8.8.8.8 >/dev/null 2>&1 \
+		&& echo -n $(F + $GREEN) \
+		|| echo -n $(F - $RED)
 }
 
-calendar() {
-	DATE=$(date -u +%d/%m/%y)
-	echo -n $(F $DATE $WHITE)
-}
-
-clock() {
-	TIME=$(date -u +%H:%M)
-	echo -n $(F $TIME $WHITE)
+datetime() {
+	echo -n $(date -u '+%H.%M %d/%m/%y')
 }
 
 volume() {
 	VOLUME=$(pamw --get)
-	if [[ $(pamw --gm) -eq 'true' ]]
-	then
-		VCOLOR=$WHITE
-	else
-		VCOLOR=$GRAY
-	fi
-	echo -n "$(A $(F $VOLUME $VCOLOR) volume)"
+	echo -n $(A $(F $VOLUME $FG) volume)
 }
 
 battery() {
 	BATTERY=$(acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g')
 	if [[ $BATTERY -gt 20 ]]
 	then
-		BCOLOR=$WHITE
+		BCOLOR=$FG
 	else
 		BCOLOR=$RED
 	fi
@@ -71,35 +65,32 @@ battery() {
 }
 
 layout() {
-	echo -n "$(A $(F $(xkb-switch) $WHITE) layout)"
+	echo -n $(A $(F $(xkb-switch) $FG) layout)
 }
 
 mpc_status() {
 	if [[ -n $(mpc | grep playing) ]]
 	then
-		echo -n "$(F "$(mpc current -f "[%title%]")" $WHITE) $DIV "
-		echo -n "$(F "$(mpc current -f "[%album%]")" $WHITE) $DIV "
-		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $WHITE) "
+		echo -n "$(F "$(mpc current -f "[%title%]")" $FG) $DIV "
+		echo -n "$(F "$(mpc current -f "[%album%]")" $FG) $DIV "
+		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $FG) "
 	else
 		echo -n ''
 	fi
 }
 
-# It's was good idea, but I'm lazy
+# It's was good idea, but I'm too lazy
 mpc_controls() {
 	echo -n ''
 }
 
-SPACER=$(F '--' $BLACK)
-
 desktops() {
-	for i in $(bspc query -D | tr "\n" " ")
+	for i in $(bspc query -D | tr '\n' ' ')
 	do
-		printf '%s' "%{A:$i:}$SPACER$(F $i $WHITE)$SPACER%{A}"
+		printf '%s' "%{A:$i:}$SPACER$(F $i $FG)$SPACER%{A}"
 	done
 }
 
-_TOP_PADDING=`bspc config top_padding`
 bspc config top_padding 30
 
 while true
@@ -119,16 +110,13 @@ do
 	printf ' %s' $(layout) $DIV
 	printf ' %s' $(volume) $DIV 
 	printf ' %s' $(battery) $DIV 
-	printf ' %s' $(clock)
-	printf ' %s' $(calendar) $DIV
+	printf ' %s' $(datetime) $DIV
 	printf ' %s \n' "$(A "$(F x $RED)" 'bspc quit') "
 
 	sleep 0.5s
  done | lemonbar \
-	-g 1346x20+10+10 \
-	-B $BLACK \
-	-F $WHITE \
-	-f -*-uushi-*-*-*-11-*-*-*-*-*-*-* \
+	-g '1346x20+10+10' \
+	-B $(gxc background \#) \
+	-F $(gxc foreground \#) \
+	-f '-*-uushi-*-*-*-11-*-*-*-*-*-*-*' \
 	| spawner
-
-bspc config top_padding $_TOP_PADDING
