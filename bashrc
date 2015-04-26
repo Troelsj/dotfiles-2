@@ -1,6 +1,4 @@
 # ~/.bashrc
-#
-# by Ivan Sokolov
 
 # If not running interactively, don't do anything 
 [[ $- != *i* ]] && return
@@ -32,26 +30,6 @@ PROMPT_COMMAND=prompt
 
 #PS1=" \[`tput setaf 6`\]┌─╼\[`tput setaf 15`\] \w \[`tput setaf 15`\]\n \[`tput setaf 6`\]└─╼\[`tput setaf 7`\] "
 
-#
-# Deprecated
-#
-#function selectps {
-#	[[ -z "$1" ]] && exit
-#	case "$1" in
-#		'---')
-#			export PS1=' $(prompt) ' ;;
-#		'pwd')
-#			export PS1=" \[\e[00;37m\]\w\[\e[0m\] " ;;
-#		'def')
-#			export PS1='[\u@\h \W]\$ ' ;;
-#		'arr')
-#			export PS1=" \[\e[01;34m\]-→\[\e[0m\] " ;;
-#		    *)
-#		    export PS1="$1" ;;
-#	esac
-#	echo "$1" > ~/.ps1
-#}
-
 # Aliases
 
 alias ls='ls --color=auto'
@@ -81,7 +59,6 @@ alias x='startx'
 
 alias reload="source $HOME/.bashrc"
 
-alias vid='vim -u ~/dotdev.vimrc'
 alias vin='vim -u /dev/null'
 
 alias pacman="pacman --color always"

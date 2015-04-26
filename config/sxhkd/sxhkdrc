@@ -1,20 +1,19 @@
 #!/bin/bash
 #
-# sxhkdrc by Ivan Sokolov
+# sxhkdrc
 
-# Hotkeys for bspwm
 
-# Quit
+# Finish bspwm session
 ctrl + alt + Delete
 	pamixer --get-volume > ~/.volume; \
 	bspc quit
 
-# Reload sxhkd
+# Reload sxhkd config
 ctrl + alt + Insert
 	pkill -USR1 -x sxhkd
 
 
-# Windows #################################################
+# Windows #####################################################################
 
 # Balance tree
 super + b
@@ -41,27 +40,16 @@ super + shift + {h,j,k,l}
 super + ctrl + {h,j,k,l}
 	bspc window -p {left,down,up,right}
 
-# Move to prev\next desktop
-super + alt + {h,l}
-	bspc window -d {prev,next}
-
-# Move to prev\next monitor
-super + alt + {j,k}
-	bspc window -m {prev,next}
-
-# Rotate leaves of tree
-super + shift + {comma,period}
-	bspc desktop -R {90,270}
-
-super + alt + {1-9}
+# Split ratio
+super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
-# Desktops ################################################
+# Desktops ####################################################################
 
-super + {1-9}
-	bspc desktop -f ^{1-9}
+super + {1-9,0}
+	bspc desktop -f ^{1-10}
 
-# Mouse ###################################################
+# Mouse #######################################################################
 
 ~button1
 	bspc pointer -g focus
@@ -75,7 +63,7 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-# Applications ############################################
+# Applications ################################################################
 
 # URxvt
 super + Return
@@ -89,8 +77,8 @@ super + space
 	dmenuw
 
 # termspawn
-super + alt + space
-	termspawn
+#super + alt + space
+#	termspawn
 
 # Fn's
 XF86AudioLowerVolume
@@ -113,16 +101,8 @@ XF86AudioNext
 XF86AudioPrev
 	mpc prev
 
-# Not working
-#XF86AudioPause
-#	mpc pause
-
 XF86AudioPlay
 	mpc toggle
 
 XF86AudioStop
 	mpc stop
-
-
-super + grave
-	sysinfo

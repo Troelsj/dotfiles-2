@@ -118,7 +118,7 @@ do
 	printf ' %s' $(network) $DIV 
 	printf ' %s' $(layout) $DIV
 	printf ' %s' $(volume) $DIV 
-	#printf ' %s' $(battery) $DIV 
+	printf ' %s' $(battery) $DIV 
 	printf ' %s' $(clock)
 	printf ' %s' $(calendar) $DIV
 	printf ' %s \n' "$(A "$(F x $RED)" 'bspc quit') "

@@ -30,5 +30,5 @@ mpd ~/.config/mpd/conf
 
 dunst &
 sxhkd -f 100 &
-compton -cb &
+compton -b &
 bspwm

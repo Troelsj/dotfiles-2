@@ -1,5 +1,7 @@
 #!/bin/bash
 
+MON = `bspc query -M -m focused`
+
 dmenu_run \
 	-i -r -l 5 \
 	-p "Run >" \

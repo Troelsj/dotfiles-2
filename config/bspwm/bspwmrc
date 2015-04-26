@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# BSPWM config file
-# by Ivan Sokolov
+# <sirikid at openmailbox dot org>
 
+# Borders and spacing
 bspc config border_width 2
 bspc config window_gap   10
 
@@ -11,18 +11,20 @@ bspc config right_padding  0
 bspc config bottom_padding 0
 bspc config left_padding   0
 
-bspc monitor -d web rest
-#bspc desktop web -l monocle
-
-bspc rule -a feh floating=true
-bspc rule -a chrome floating=true
-
-bspc config split_ratio        0.50
 bspc config gapless_monocle    true
 bspc config borderless_monocle true
 
+# Desktops
+bspc monitor -d web rest
+
+# Rules
+bspc rule -a feh floating=true
+
+# Something else
+bspc config split_ratio        0.50
 bspc config focus_follows_pointer true
 
+# Colors
 bspc config focused_border_color \#$(gxc boldblack)
 bspc config active_border_color  \#$(gxc black)
 bspc config normal_border_color  \#$(gxc black)
@@ -42,6 +44,7 @@ bspc config normal_private_border_color  \#$(gxc boldmagenta)
 
 bspc config urgent_border_color \#$(gxc white)
 
-wmname LG3D &
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' &
+# Fix for Java Swing applications
+wmname LG3D
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 export _JAVA_AWT_WM_NONREPAINTING=1
