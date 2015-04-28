@@ -13,7 +13,7 @@ ctrl + alt + Insert
 	pkill -USR1 -x sxhkd
 
 
-# Windows #####################################################################
+## Windows
 
 # Balance tree
 super + b
@@ -44,12 +44,12 @@ super + ctrl + {h,j,k,l}
 super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
 
-# Desktops ####################################################################
+## Desktops
 
 super + {1-9}
 	bspc desktop -f ^{1-9}
 
-# Mouse #######################################################################
+## Mouse
 
 ~button1
 	bspc pointer -g focus
@@ -63,7 +63,7 @@ super + !button{1-3}
 super + @button{1-3}
 	bspc pointer -u
 
-# Applications ################################################################
+## Applications
 
 # URxvt
 super + Return
@@ -80,7 +80,7 @@ super + space
 #super + alt + space
 #	termspawn
 
-# Fn's
+## Fn's
 XF86AudioLowerVolume
 	pamixer --decrease 5
 

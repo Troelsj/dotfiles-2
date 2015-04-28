@@ -28,7 +28,7 @@ pamixer --unmute
 
 mpd ~/.config/mpd/conf
 
-dunst &
+#dunst &
 sxhkd -f 100 &
 compton -b &
 bspwm

@@ -30,4 +30,4 @@ URxvt*keysym.End:  \033[4~
 !URxvt.colorBD: _1
 !URxvt.colorUL: _2
 
-#include "Projects/dotfiles/xcolors/test"
+#include "Projects/dotfiles/xcolors/dotdev"

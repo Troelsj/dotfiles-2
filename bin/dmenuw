@@ -1,15 +1,37 @@
 #!/bin/bash
 
-MON = `bspc query -M -m focused`
+P='Run >'
+FN='-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*'
+DIM=0.5
+
+NB=`gxc bg \#`
+NF=`gxc fg \#`
+SB=`gxc bbla \#`
+SF=`gxc bwhi \#`
+
+if [[ -n `pgrep panel` ]]
+then
+	X=10
+	Y=10
+	W=1346
+	H=20
+	L=0
+else
+	X=523
+	Y=324
+	W=320
+	H=20
+	L=5
+fi
 
 dmenu_run \
-	-i -r -l 5 \
-	-p "Run >" \
-	-x 523 -y 324 \
-	-w 320 -h 20 \
-	-fn '-*-lemon-*-*-*-*-10-*-*-*-*-*-*-*' \
-	-dim 0.5 \
-	-nb $(gxc black \#) \
-	-nf $(gxc white \#) \
-	-sb $(gxc boldblack \#) \
-	-sf $(gxc boldwhite \#)
+	-i -r -l $L \
+	-p "$P" \
+	-x $X -y $Y \
+	-w $W -h $H \
+	-fn $FN \
+	-dim $DIM \
+	-nb $NB \
+	-nf $NF \
+	-sb $SB \
+	-sf $SF

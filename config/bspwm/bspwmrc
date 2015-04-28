@@ -1,6 +1,4 @@
 #!/bin/bash
-#
-# <sirikid at openmailbox dot org>
 
 # Borders and spacing
 bspc config border_width 2
@@ -46,5 +44,9 @@ bspc config urgent_border_color $(gxc white \#)
 
 # Fix for Java Swing applications
 wmname LG3D
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+export _JAVA_OPTIONS=<<EOF
+-Dawt.useSystemAAFontSettings=on \
+-Dswing.aatext=true \
+-Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel \
+EOF
 export _JAVA_AWT_WM_NONREPAINTING=1

@@ -1,6 +1,6 @@
 if &diff || exists("vimpager")
 
-	set noloadplugins
+set noloadplugins
 
 else
 
