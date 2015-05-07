@@ -10,24 +10,24 @@
 ! URLs
 *underlineURLs: true
 
-! Font
-XTerm*font:       -*-clean-medium-*-*-14-*-*-*-*-*-*-*
-XTerm*boldFont:   -*-clean-medium-*-*-14-*-*-*-*-*-*-*
-XTerm*italicFont: -*-clean-medium-*-*-14-*-*-*-*-*-*-*
+! Fonts
+#define F1 -*-lemon-*-*-*-10-*-*-*-*-*-*-*
+#define F2 -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+!#define F2 -*-lemon-*-*-*-10-*-*-*-*-*-*-*
+
+!XTerm
+XTerm*font:       F1
+XTerm*boldFont:   F1
+XTerm*italicFont: F1
 XTerm*letterSpace: -1
-URxvt*font:       -*-uushi-*-*-*-11-*-*-*-*-*-*-*
-URxvt*boldFont:   -*-uushi-*-*-*-11-*-*-*-*-*-*-*
-URxvt*italicFont: -*-uushi-*-*-*-11-*-*-*-*-*-*-*
+
+!URxvt
+URxvt*font:       F2
+URxvt*boldFont:   F2
+URxvt*italicFont: F2
 URxvt*letterSpace: 0
-!URxvt*font:       -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
-!URxvt*boldFont:   -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
-!URxvt*italicFont: -*-ohsnap-*-*-*-13-*-*-*-*-*-*-5
 
 URxvt*keysym.Home: \033[1~
 URxvt*keysym.End:  \033[4~
-
-!URxvt.colorIT: _0
-!URxvt.colorBD: _1
-!URxvt.colorUL: _2
 
 #include "Projects/dotfiles/xcolors/dotdev"

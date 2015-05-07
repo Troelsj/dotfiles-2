@@ -2,24 +2,29 @@
 
 # Borders and spacing
 bspc config border_width 2
-bspc config window_gap   10
+bspc config window_gap   30
 
 bspc config top_padding    0
 bspc config right_padding  0
 bspc config bottom_padding 0
 bspc config left_padding   0
 
+# Desktops
+for mon in $(bspc query -M); do
+	bspc monitor $mon -d web rest
+done
+
+#bspc desktop web -l monocle
+#bspc desktop rest -l tiled
+
 bspc config gapless_monocle    true
 bspc config borderless_monocle true
-
-# Desktops
-bspc monitor -d web rest
 
 # Rules
 bspc rule -a feh floating=true
 
 # Something else
-bspc config split_ratio        0.50
+bspc config split_ratio           0.50
 bspc config focus_follows_pointer true
 
 # Colors
@@ -45,8 +50,8 @@ bspc config urgent_border_color $(gxc white \#)
 # Fix for Java Swing applications
 wmname LG3D
 export _JAVA_OPTIONS=<<EOF
--Dawt.useSystemAAFontSettings=on \
--Dswing.aatext=true \
--Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel \
+-Dawt.useSystemAAFontSettings=on
+-Dswing.aatext=true
+-Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel
 EOF
 export _JAVA_AWT_WM_NONREPAINTING=1

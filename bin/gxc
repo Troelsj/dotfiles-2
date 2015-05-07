@@ -36,6 +36,7 @@ case $1 in
 	fg|foreground ) CC='foreground' ;;
 	it|italic     ) CC="${CC}IT" ;;
 	ul|underline  ) CC="${CC}UL" ;;
+	0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15) CC="${CC}${1}" ;;
 	*) echo 'invalid color'
 	   exit ;;
 esac

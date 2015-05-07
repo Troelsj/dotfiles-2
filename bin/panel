@@ -111,7 +111,7 @@ do
 	printf ' %s' $(volume) $DIV 
 	printf ' %s' $(battery) $DIV 
 	printf ' %s' $(datetime) $DIV
-	printf ' %s \n' "$(A "$(F x $RED)" 'bspc quit') "
+	printf ' %s \n' "$(A "$(F x $RED)" 'killwm') "
 
 	sleep 0.5s
  done | lemonbar \

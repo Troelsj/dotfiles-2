@@ -11,6 +11,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
+if [[ `xrandr -q | grep ' connected ' | wc -l` -gt 1 ]]; then
+	xrandr --output LVDS1 --auto --primary # --off
+	xrandr --output VGA1 --right-of LVDS1 # --auto --primary
+else
+	xrandr --output LVDS1 --auto --primary
+fi
+
 xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local/
 xset fp rehash
@@ -31,4 +38,4 @@ mpd ~/.config/mpd/conf
 #dunst &
 sxhkd -f 100 &
 compton -b &
-bspwm
+exec bspwm

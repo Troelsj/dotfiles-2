@@ -4,14 +4,13 @@ set noloadplugins
 
 else
 
-
 set nocompatible
 set encoding=utf8
 set nobackup noswapfile nowritebackup noundofile
 set incsearch hlsearch
 set mouse=a
 set modeline
-set more " -----------------------
+set more
 set ruler
 set cursorline
 set showmode
@@ -23,7 +22,7 @@ set lazyredraw
 "set foldmethod=syntax
 set wildmenu
 set fillchars=vert:\
-set statusline=\ \%F%m%r%h%w\ \ %y\ [%{&ff}]\%=\ %l
+"set statusline=\ \%F%m%r%h%w\ \ %y\ [%{&ff}]\%=\ %l
 set laststatus=2
 set cmdheight=1
 
@@ -43,7 +42,7 @@ set colorcolumn=80
 set magic
 "set ignorecase
 "set smartcase
-set list listchars=tab:>\ ,trail:·,precedes:«,extends:»
+set list listchars=tab:\>\ ,trail:·,precedes:«,extends:»
 set scrolloff=5 sidescrolloff=5 scrolljump=1
 set ttyfast
 set diffopt+=context:3
@@ -69,12 +68,29 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
-	Plugin 'gmarik/Vundle.vim'
-	Plugin 'Raimondi/delimitMate'
-	Plugin 'udalov/kotlin-vim'
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'udalov/kotlin-vim'
+Plugin 'bling/vim-airline'
+
 call vundle#end()
 
 filetype plugin on
 filetype plugin indent on
+
+let g:airline_theme='custom'
+
+let g:airline_symbols   = {}
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
+let g:airline_section_warning = ''
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = '%f'
+function! AirlineInit()
+	  let g:airline_section_c = airline#section#create(['filetype'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+let g:airline_section_x = 'u%04b 0x%04B'
 
 endif

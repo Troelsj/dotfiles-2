@@ -5,13 +5,15 @@
 
 # Finish bspwm session
 ctrl + alt + Delete
-	pamixer --get-volume > ~/.volume; \
-	bspc quit
+	killwm
 
 # Reload sxhkd config
 ctrl + alt + Insert
 	pkill -USR1 -x sxhkd
 
+# Lock
+#ctrl + alt + l
+#	lock
 
 ## Windows
 

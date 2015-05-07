@@ -9,6 +9,6 @@ ORIGIN='/usr/bin/touch'
 for i in $@
 do
 	DIR=$(dirname $i)
-	[[ -d $DIR]] || mkdir -p $DIR
+	[[ -d $DIR ]] || mkdir -p $DIR
 	$ORIGIN $i
 done
