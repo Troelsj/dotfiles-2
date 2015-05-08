@@ -5,9 +5,10 @@
 while read cmd
 do
 	case "$cmd" in
-		volume) pamixer --toggle-mute ;;
+		volume) pamw -t ;;
 		layout) xkb-switch --next ;;
-		 [1-9]) bspc desktop -f ^$cmd ;;
-		     *) bspc desktop -f $cmd ;;
+		killwm) wm --kill ;;
+		[1-9])  bspc desktop -f ^$cmd ;;
+		*)      bspc desktop -f $cmd ;;
 	esac
 done

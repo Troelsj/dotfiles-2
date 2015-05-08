@@ -1,122 +1,119 @@
-#!/bin/bash
+#!/bin/sh
 
-FG=$(gxc fg ff)
-RED=$(gxc red ff)
-GREEN=$(gxc boldgreen ff)
-BG=$(gxc bg ff)
-GRAY=$(gxc boldblack ff)
+#
+# See also: spawner
+#
+
+# lemonbar params
+LBARGS="-B $(gxc background \#) -F $(gxc foreground \#)\
+ -g 1346x20+10+10 -f -*-uushi-*-*-*-11-*-*-*-*-*-*-*"
+
+# Colors
+BG=$(gxc bg ff)        # background
+FG=$(gxc fg ff)        # foreground
+GN=$(gxc boldgreen ff) # green
+GY=$(gxc boldblack ff) # gray
+RD=$(gxc boldred ff)   # red
 
 # Clickable area
+#
+# $1 text
+# $2 command
+#
 function A {
 	[[ -n $2 ]] && echo -n "%{A:$2:}${1}%{A}"
 }
 
 # Background color
+#
+# $1 text
+# $2 background color
+#
 function B {
 	[[ -n $2 ]] && echo -n "%{B#$2}${1}%{B-}"
 }
 
 # Foreground color
+#
+# $1 text
+# $2 foreground color
+#
 function F {
 	[[ -n $2 ]] && echo -n "%{F#$2}${1}%{F-}"
 }
 
-# Overlined (?) text
+# Overlined text
+#
+# $1 text
+#
 function o {
 	[[ -n $1 ]] && echo -n "%{+o}${1}%{-o}"
 }
 
 # Underlined text
+#
+# $1 text
+#
 function u {
 	[[ -n $1 ]] && echo -n "%{+u}${1}%{-u}"
 }
 
-###
+# Special
+DV=$(F '::' $GY) # divider
+SP=$(F '--' $BG) # spacer
 
-DIV=$(F \| $GRAY)
-SPACER=$(F -- $BG)
 
-###
+# Panel parts
 
+NET0=$(F + $GN)
+NET1=$(F - $RD)
 network() {
-	ping -c 1 8.8.8.8 >/dev/null 2>&1 \
-		&& echo -n $(F + $GREEN) \
-		|| echo -n $(F - $RED)
+	ping -c 1 google.com >/dev/null 2>&1 && echo -n $NET0 || echo -n $NET1
 }
 
 datetime() {
-	echo -n $(date -u '+%H.%M %d/%m/%y')
+	date -u '+%H.%M %d/%m/%y' | tr -d '\n'
 }
 
+# In that case ``pamw'' is equal to ``pamixer --get-volume''
 volume() {
-	VOLUME=$(pamw --get)
-	echo -n $(A $(F $VOLUME $FG) volume)
+	A $(pamw) volume
 }
 
 battery() {
-	BATTERY=$(acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g')
-	if [[ $BATTERY -gt 20 ]]
-	then
-		BCOLOR=$FG
-	else
-		BCOLOR=$RED
-	fi
-	echo -n $(F $BATTERY $BCOLOR)
+	VAL=$(acpi -b | tail -c 5 | tr -d '%')
+	[[ $VAL -gt 20 ]] && echo -n $VAL || F $VAL $RD
 }
 
 layout() {
-	echo -n $(A $(F $(xkb-switch) $FG) layout)
+	A $(xkb-switch) layout
 }
 
+# I have to use sed, because mpc does not print ``#''
+MPCFMT=' [%title%] _DV [%album%] _DV [%artist%] '
 mpc_status() {
-	if [[ -n $(mpc | grep playing) ]]
-	then
-		echo -n "$(F "$(mpc current -f "[%title%]")" $FG) $DIV "
-		echo -n "$(F "$(mpc current -f "[%album%]")" $FG) $DIV "
-		echo -n "$(F "$(mpc current -f "[%artist%|%albumartist%|%performer%]")" $FG) "
-	else
-		echo -n ''
-	fi
+	mpc current -f "$MPCFMT" | tr -d '\n' | sed s/_DV/"$DV"/g
 }
 
-# It's was good idea, but I'm too lazy
-mpc_controls() {
-	echo -n ''
-}
+#bspc config top_padding 30
 
-desktops() {
-	for i in $(bspc query -D | tr '\n' ' ')
-	do
-		printf '%s' "%{A:$i:}$SPACER$(F $i $FG)$SPACER%{A}"
-	done
-}
-
-bspc config top_padding 30
-
-while true
-do
-	# Left
-	printf '%s' '%{l}'
-	desktops
-	
-	# Center
-	#printf '%s' '%{c}' "$(mpc_status)" "$(mpc_controls)"
-	#printf '%s' "$(mpc_status)"
-	#printf '%s' "$(mpc_controls)"
-	
-	# Right
-	printf '%s' "%{r}"
-	printf ' %s' $(network) $DIV 
-	printf ' %s' $(layout) $DIV
-	printf ' %s' $(volume) $DIV 
-	printf ' %s' $(battery) $DIV 
-	printf ' %s' $(datetime) $DIV
-	printf ' %s \n' "$(A "$(F x $RED)" 'killwm') "
-
+while true; do
+# Left part
+	mpc_status
+# Right part
+	echo -n '%{r}'
+	network
+	printf ' %s ' $DV
+	layout
+	printf ' %s ' $DV
+	volume
+	printf ' %s ' $DV
+	battery
+	printf ' %s ' $DV
+	datetime
+	printf ' %s ' $DV
+	A "$(F ' x ' $RD)" 'killwm'
 	sleep 0.5s
- done | lemonbar \
-	-g '1346x20+10+10' \
-	-B $(gxc background \#) \
-	-F $(gxc foreground \#) \
-	-f '-*-uushi-*-*-*-11-*-*-*-*-*-*-*' \
-	| spawner
+# Clear bar
+	echo
+done | lemonbar $LBARGS | spawner

@@ -4,11 +4,11 @@
 
 
 # Finish bspwm session
-ctrl + alt + Delete
-	killwm
+ctrl + alt + k
+	wm --kill
 
 # Reload sxhkd config
-ctrl + alt + Insert
+ctrl + alt + l
 	pkill -USR1 -x sxhkd
 
 # Lock
