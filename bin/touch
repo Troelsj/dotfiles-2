@@ -1,6 +1,4 @@
-#!/bin/bash
-#
-# Wrapper for touch
+#!/bin/sh
 
 ORIGIN='/usr/bin/touch'
 

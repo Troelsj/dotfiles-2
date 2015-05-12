@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-fext () {
+function process {
 	case $1 in
 		*.tar.bz2)
 			tar xvjf $1 ;;
@@ -28,7 +28,7 @@ fext () {
 for i in $@
 do
 	if [ -f $1 ]; then
-		fext $1
+		process $1
 	else
 		echo "'$1' is not a valid file!"
 	fi

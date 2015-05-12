@@ -21,7 +21,7 @@ set scrolloff=3
 set lazyredraw
 "set foldmethod=syntax
 set wildmenu
-set fillchars=vert:\
+set fillchars=vert:\ 
 "set statusline=\ \%F%m%r%h%w\ \ %y\ [%{&ff}]\%=\ %l
 set laststatus=2
 set cmdheight=1
@@ -92,5 +92,7 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 let g:airline_section_x = 'u%04b 0x%04B'
+
+:au FocusLost * :wa
 
 endif

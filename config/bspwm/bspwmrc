@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Borders and spacing
-bspc config border_width 2
+bspc config border_width 1
 bspc config window_gap   30
 
 bspc config top_padding    0

@@ -11,9 +11,9 @@ SF=`gxc bwhi \#`
 
 if [[ -n `pgrep panel` ]]
 then
-	X=10
-	Y=10
-	W=1346
+	X=30
+	Y=20
+	W=1306
 	H=20
 	L=0
 else

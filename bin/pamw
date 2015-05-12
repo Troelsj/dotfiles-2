@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 usage() {
 	cat <<EOF
@@ -14,6 +14,7 @@ pamw options:
   -m --mut              mute
 EOF
 }
+
 if [[ -z $1 ]]; then
 	pamw -g
 else
