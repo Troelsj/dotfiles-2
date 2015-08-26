@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ORIGIN='/usr/bin/touch'
+ORIGIN='/bin/touch'
 
 [[ -z $@ ]] && exit
 

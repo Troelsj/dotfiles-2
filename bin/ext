@@ -2,9 +2,11 @@
 
 function process {
 	case $1 in
-		*.tar.bz2)
+		*.tar.xz|*.txz)
+			tar xvJf $1 ;;
+		*.tar.bz2|*.tbz|*.tbz2)
 			tar xvjf $1 ;;
-		*.tar.gz)
+		*.tar.gz|*.tgz)
 			tar xvzf $1 ;;
 		*.bz2)
 			bunzip2 $1 ;;
