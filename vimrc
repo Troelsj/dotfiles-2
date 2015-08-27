@@ -40,8 +40,8 @@ set noconfirm
 set noerrorbells visualbell t_vb=
 set colorcolumn=80
 set magic
-"set ignorecase
-"set smartcase
+set ignorecase
+set smartcase
 set list listchars=tab:\>\ ,trail:·,precedes:«,extends:»
 set scrolloff=5 sidescrolloff=5 scrolljump=1
 set ttyfast

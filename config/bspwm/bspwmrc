@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Borders and spacing
-bspc config border_width 1
-bspc config window_gap   30
+bspc config border_width 2
+bspc config window_gap   20
 
-bspc config top_padding    0
-bspc config right_padding  0
-bspc config bottom_padding 0
-bspc config left_padding   0
+bspc config top_padding    10
+bspc config right_padding  10
+bspc config bottom_padding 10
+bspc config left_padding   10
 
 # Desktops
 for mon in $(bspc query -M); do

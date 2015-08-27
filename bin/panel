@@ -6,7 +6,7 @@
 
 # lemonbar params
 LBARGS="-B $(gxc background \#) -F $(gxc foreground \#)\
- -g 1306x20+30+20 -f -*-lemon-*-*-*-10-*-*-*-*-*-*-*"
+ -g 1000x20+20+20 -f -*-lemon-*-*-*-10-*-*-*-*-*-*-*"
 
 # Colors
 BG=$(gxc bg ff)        # background
@@ -100,14 +100,14 @@ bspc config top_padding 30
 BSPWM="  $(F bspwm $(gxc boldcyan ff)) %{r}"
 while true; do
 # Left part
-	mpc_status
+#	mpc_status
 # Right part
 	echo -n " $BSPWM"
 	network
 	echo -n $DV
 	layout
-	echo -n $DV
-	volume
+#	echo -n $DV
+#	volume
 	echo -n $DV
 	battery
 	echo -n $DV
