@@ -14,8 +14,8 @@ for mon in $(bspc query -M); do
 	bspc monitor $mon -d web rest
 done
 
-bspc desktop web -l monocle
-bspc desktop rest -l tiled
+#bspc desktop web -l monocle
+#bspc desktop rest -l tiled
 
 bspc config gapless_monocle    true
 bspc config borderless_monocle true
@@ -28,10 +28,10 @@ bspc config split_ratio           0.50
 bspc config focus_follows_pointer true
 
 # Colors
-bspc config focused_border_color $(gxc boldblack \#)
+bspc config focused_border_color $(gxc white \#)
 bspc config active_border_color  $(gxc black \#)
 bspc config normal_border_color  $(gxc black \#)
-bspc config presel_border_color  $(gxc black \#)
+bspc config presel_border_color  $(gxc bred \#)
 
 bspc config focused_locked_border_color $(gxc red \#)
 bspc config active_locked_border_color  $(gxc boldred \#)

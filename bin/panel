@@ -6,7 +6,7 @@
 
 # lemonbar params
 LBARGS="-B $(gxc background \#) -F $(gxc foreground \#)\
- -g 1000x20+20+20 -f -*-lemon-*-*-*-10-*-*-*-*-*-*-*"
+ -g 1206x20+80+10 -f -*-lemon-*-*-*-10-*-*-*-*-*-*-*"
 
 # Colors
 BG=$(gxc bg ff)        # background
@@ -95,25 +95,30 @@ mpc_status() {
 	mpc current -f "$MPCFMT" | tr -d '\n' | sed s/_DV/"$DV"/g
 }
 
-bspc config top_padding 30
+desktops() {
+	printf "desk"
+}
 
-BSPWM="  $(F bspwm $(gxc boldcyan ff)) %{r}"
+BSPWM="  $(F bspwm $(gxc boldcyan ff))"
 while true; do
 # Left part
 #	mpc_status
 # Right part
 	echo -n " $BSPWM"
+	A ' web' 1
+	A ' rest' 2
+	echo -n '%{r}'
 	network
-	echo -n $DV
-	layout
+#	echo -n $DV
+#	layout
 #	echo -n $DV
 #	volume
-	echo -n $DV
-	battery
+#	echo -n $DV
+#	battery
 	echo -n $DV
 	datetime
 	echo -n $DV
-	A "$(F 'x' $RD)  " 'killwm'
+	A "$(F 'x' $RD)  " 'quit'
 # Sleep
 	sleep 0.5s
 # Clear bar

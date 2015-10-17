@@ -69,10 +69,10 @@ super + @button{1-3}
 
 # URxvt
 super + Return
-	st
+	urxvt
 # XTerm
 super + alt + Return
-	xterm
+	st
 
 # dmenu
 super + space

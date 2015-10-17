@@ -21,7 +21,7 @@ set scrolloff=3
 set lazyredraw
 "set foldmethod=syntax
 set wildmenu
-set fillchars=vert:\ 
+set fillchars=vert:\-
 "set statusline=\ \%F%m%r%h%w\ \ %y\ [%{&ff}]\%=\ %l
 set laststatus=2
 set cmdheight=1
@@ -32,9 +32,9 @@ set wildchar=<Tab>
 set backspace=indent,eol,start
 set number
 set background=dark
-colorscheme dotdev
+colorscheme jellybeans
 set notitle
-"set hidden
+set hidden
 set iskeyword+=_,$,@,%,#
 set noconfirm
 set noerrorbells visualbell t_vb=
@@ -42,7 +42,7 @@ set colorcolumn=80
 set magic
 set ignorecase
 set smartcase
-set list listchars=tab:\>\ ,trail:·,precedes:«,extends:»
+set list listchars=tab:\>\ ,trail:~,precedes:<,extends:>
 set scrolloff=5 sidescrolloff=5 scrolljump=1
 set ttyfast
 set diffopt+=context:3
@@ -73,6 +73,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'udalov/kotlin-vim'
 Plugin 'bling/vim-airline'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 

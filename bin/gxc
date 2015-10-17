@@ -7,6 +7,17 @@ PREFIX=
 if [[ -z $1 ]]; then
 	echo 'missing argument'
 	exit
+#elif (( $1 == '-h' || $1 == '--help' )); then
+#	cat <<EOF
+#Usage: `basename $0` help|<color number>|<color name> [prefix]
+#where <color number> is
+#	`seq 15 | tr "\n" ' '`
+#and <color name> is
+#	bla[ck] red gre[en] yel[low] blu[e] mag[enta] cya[n] whi[te]
+#	b[old]bla[ck] b[old]red b[old]gre[en] ...
+#	b[ack]g[round] f[ore]g[round] it[alic] u[under]l[ine]
+#EOF
+#	exit
 fi
 
 if [[ -n $2 ]]; then
