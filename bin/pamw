@@ -22,35 +22,17 @@ else
 		'-h'|'--help')
 			usage ;;
 		'-s'|'--set')
-			if [[ -n $2 ]]
-			then
-				pamixer --set-volume $2
-			else
-				echo 'missing argument'
-			fi
-			;;
+			amixer -q set Master ${2}%= ;;
 		'-g'|'--get')
-			pamixer --get-volume ;;
+			amixer -q get Master ;;
 		'-i'|'--inc')
-			if [[ -n $2 ]]
-			then
-				pamixer --increase $2
-			else
-				echo 'missing argument'
-			fi
-			;;
+			amixer -q set Master ${2}%+ ;;
 		'-d'|'--dec')
-			if [[ -n $2 ]]
-			then
-				pamixer --decrease $2
-			else
-				echo 'missing argument'
-			fi
-			;;
+			amixer -q set Master ${2}%- ;;
 		'--gm')
 			pamixer --get-mute ;;
 		'-t')
-			pamixer --toggle-mute ;;
+			amixer -q set Master toggle ;;
 		'-u')
 			pamixer --unmute ;;
 		'-m')

@@ -1,54 +1,89 @@
 #!/bin/sh
 #
-# Get X Color
+# gxc - get x color
+#
 
 PREFIX=
 
-if [[ -z $1 ]]; then
-	echo 'missing argument'
-	exit
-#elif (( $1 == '-h' || $1 == '--help' )); then
-#	cat <<EOF
-#Usage: `basename $0` help|<color number>|<color name> [prefix]
-#where <color number> is
-#	`seq 15 | tr "\n" ' '`
-#and <color name> is
-#	bla[ck] red gre[en] yel[low] blu[e] mag[enta] cya[n] whi[te]
-#	b[old]bla[ck] b[old]red b[old]gre[en] ...
-#	b[ack]g[round] f[ore]g[round] it[alic] u[under]l[ine]
-#EOF
-#	exit
+if [ -z $1 ]; then
+  echo 'missing argument'
+  exit 1
 fi
 
-if [[ -n $2 ]]; then
-	PREFIX=$2
+if [ -n $2 ]; then
+  PREFIX=$2
 fi
-
-CC='color'
 
 case $1 in
-	0|bla|black        ) CC="${CC}0" ;;
-	1|red              ) CC="${CC}1" ;;
-	2|gre|green        ) CC="${CC}2" ;;
-	3|yel|yellow       ) CC="${CC}3" ;;
-	4|blu|blue         ) CC="${CC}4" ;;
-	5|mag|magenta      ) CC="${CC}5" ;;
-	6|cya|cyan         ) CC="${CC}6" ;;
-	7|whi|white        ) CC="${CC}7" ;;
-	8|bbla|boldblack   ) CC="${CC}8" ;;
-	9|bred|boldred     ) CC="${CC}9" ;;
-	10|bgre|boldgreen  ) CC="${CC}10" ;;
-	11|byel|boldyellow ) CC="${CC}11" ;;
-	12|bblu|boldblue   ) CC="${CC}12" ;;
-	13|bmag|boldmagenta) CC="${CC}13" ;;
-	14|bcya|boldcyan   ) CC="${CC}14" ;;
-	15|bwhi|boldwhite  ) CC="${CC}15" ;;
-	bg|background      ) CC='background' ;;
-	fg|foreground      ) CC='foreground' ;;
-	it|italic          ) CC="${CC}IT" ;;
-	ul|underline       ) CC="${CC}UL" ;;
-	*) echo 'invalid color'
-	   exit ;;
+  0|bla|black)
+    CC='color0:'
+    ;;
+  1|red)
+    CC='color1:'
+    ;;
+  2|gre|green)
+    CC='color2:'
+    ;;
+  3|yel|yellow)
+    CC='color3:'
+    ;;
+  4|blu|blue)
+    CC='color4:'
+    ;;
+  5|mag|magenta)
+    CC='color5:'
+    ;;
+  6|cya|cyan)
+    CC='color6:'
+    ;;
+  7|whi|white)
+    CC='color7:'
+    ;;
+  8|bbla|boldblack)
+    CC='color8:'
+    ;;
+  9|bred|boldred)
+    CC='color9:'
+    ;;
+  10|bgre|boldgreen)
+    CC='color10:'
+    ;;
+  11|byel|boldyellow)
+    CC='color11:'
+    ;;
+  12|bblu|boldblue)
+    CC='color12:'
+    ;;
+  13|bmag|boldmagenta)
+    CC='color13:'
+    ;;
+  14|bcya|boldcyan)
+    CC='color14:'
+    ;;
+  15|bwhi|boldwhite)
+    CC='color15:'
+    ;;
+  
+  bg|background)
+    CC='background:'
+    ;;
+  fg|foreground)
+    CC='foreground:'
+    ;;
+  it|italic)
+    CC='colorIT:'
+    ;;
+  ul|underline)
+    CC='colorUL:'
+    ;;
+  -h|--help)
+    echo "Usage: $(basename $0) -h --help | color number | color name [prefix]"
+    exit 0
+    ;;
+  *)
+    echo 'invalid color identificator'
+    exit 1
+    ;;
 esac
 
-echo $PREFIX`xrdb -query | grep "$CC:" | tail -c 7`
+echo "$PREFIX$(xrdb -query | grep "$CC" | tail -c 7)"

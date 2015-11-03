@@ -1,0 +1,33 @@
+!
+! black
+! red
+! green
+! yelow
+! blue
+! magenta
+! cyan
+! white
+!
+
+#define BG #080808
+#define FG #c0c0c0
+
+#define C0 BG
+#define C1 #884444
+#define C2 #448844
+#define C3 #888844
+#define C4 #444488
+#define C5 #884488
+#define C6 #448888
+#define C7 #f0f0f0
+
+#define C8 #444444
+#define C9 #cc8888
+#define C10 #88cc88
+#define C11 #cccc88
+#define C12 #8888cc
+#define C13 #cc88cc
+#define C14 #88cccc
+#define C15 #ffffff
+
+! vim: ft=xdefaults

@@ -26,13 +26,9 @@ set fillchars=vert:\-
 set laststatus=2
 set cmdheight=1
 
-syntax on
-
 set wildchar=<Tab>
 set backspace=indent,eol,start
 set number
-set background=dark
-colorscheme jellybeans
 set notitle
 set hidden
 set iskeyword+=_,$,@,%,#
@@ -42,7 +38,7 @@ set colorcolumn=80
 set magic
 set ignorecase
 set smartcase
-set list listchars=tab:\>\ ,trail:~,precedes:<,extends:>
+set list listchars=tab:\|\ ,trail:~,precedes:<,extends:>
 set scrolloff=5 sidescrolloff=5 scrolljump=1
 set ttyfast
 set diffopt+=context:3
@@ -59,9 +55,9 @@ set nojoinspaces
 set autoread
 set clipboard=unnamed
 
-let pascal_delphi=1
-let pascal_fpc=1
-let pascal_functions=1
+syntax on
+set background=dark
+colorscheme jellybeans
 
 filetype off
 
@@ -74,6 +70,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'udalov/kotlin-vim'
 Plugin 'bling/vim-airline'
 Plugin 'rust-lang/rust.vim'
+Plugin 'cespare/vim-toml'
 
 call vundle#end()
 
@@ -88,12 +85,27 @@ let g:airline_right_sep = ''
 let g:airline_section_warning = ''
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = '%f'
-function! AirlineInit()
-	  let g:airline_section_c = airline#section#create(['filetype'])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
-let g:airline_section_x = 'u%04b 0x%04B'
 
-:au FocusLost * :wa
+function! AirlineInit()
+	let g:airline_section_a = airline#section#create(['mode'])
+	let g:airline_section_b = airline#section#create(['%t'])
+	let g:airline_section_c = airline#section#create(['filetype'])
+
+	let g:airline_section_x = 'u%04b 0x%04B'
+"	let g:airline_section_y = 
+"	let g:airline_section_z = 
+endfunction
+
+:au User AirlineAfterInit call AirlineInit()
+
+:au FocusLost * wa
+
+:au BufNewFile,BufRead *Pkgfile set ft=sh
+
+augroup filetype pascal
+	let pascal_fpc=1
+	let pascal_delphi=1
+	let pascal_functions=1
+augroup END
 
 endif

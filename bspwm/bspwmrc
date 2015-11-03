@@ -29,9 +29,9 @@ bspc config focus_follows_pointer true
 
 # Colors
 bspc config focused_border_color $(gxc white \#)
-bspc config active_border_color  $(gxc black \#)
-bspc config normal_border_color  $(gxc black \#)
-bspc config presel_border_color  $(gxc bred \#)
+bspc config active_border_color  $(gxc boldblack \#)
+bspc config normal_border_color  $(gxc boldblack \#)
+bspc config presel_border_color  $(gxc boldred \#)
 
 bspc config focused_locked_border_color $(gxc red \#)
 bspc config active_locked_border_color  $(gxc boldred \#)
