@@ -11,12 +11,21 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-if [[ `xrandr -q | grep ' connected ' | wc -l` -gt 1 ]]; then
-	xrandr --output LVDS1 --auto --primary # --off
-	xrandr --output VGA1 --right-of LVDS1 # --auto --primary
-else
-	xrandr --output LVDS1 --auto --primary
-fi
+SCREEN=$(xrandr|grep ' connected'|tail -n 1|tr ' ' '\n'|head -n 1)
+
+case $SCREEN in
+  LVDS-0)
+    xrandr --output LVDS-0 --primary --mode 1366x768
+    ;;
+  VGA-0)
+    xrandr --output VGA-0 --primary --mode 1280x1024 \
+      --output LVDS-0 --off
+    ;;
+  *)
+    echo 'Oops!'
+    exit 1
+    ;;
+esac
 
 xset +fp ~/.fonts
 xset +fp /usr/share/fonts/local/
@@ -24,18 +33,16 @@ xset fp rehash
 xset -dpms
 xset s off
 
-[[ -f ~/.Xresources ]] && xrdb ~/.Xresources
+[ -f ~/.Xresources ] && xrdb ~/.Xresources
 
-~/.fehbg
+[ -f ~/.xprops ] && . ~/.xprops
+
+[ -x ~/.fehbg ] && ~/.fehbg
 
 xsetroot -cursor_name left_ptr
 
-pamixer --set-volume $(cat ~/.volume)
-pamixer --unmute
-
-mpd ~/.config/mpd/conf
-
-#dunst &
 sxhkd -f 100 &
-compton -b &
-exec bspwm
+compton -Cb &
+wew | yawee
+
+xwait

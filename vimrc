@@ -38,7 +38,9 @@ set colorcolumn=80
 set magic
 set ignorecase
 set smartcase
-set list listchars=tab:\|\ ,trail:~,precedes:<,extends:>
+"set list listchars=tab:\|\ ,trail:~,precedes:<,extends:>
+set list listchars=tab:\>\ ,trail:·,precedes:«,extends:»
+",eol:⌐
 set scrolloff=5 sidescrolloff=5 scrolljump=1
 set ttyfast
 set diffopt+=context:3
@@ -54,6 +56,8 @@ set whichwrap=b,s,<,>,[,]
 set nojoinspaces
 set autoread
 set clipboard=unnamed
+set foldmethod=syntax
+set foldnestmax=1
 
 syntax on
 set background=dark
@@ -83,18 +87,17 @@ let g:airline_symbols   = {}
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 let g:airline_section_warning = ''
-let g:airline_powerline_fonts = 1
-let g:airline_section_b = '%f'
 
 function! AirlineInit()
 	let g:airline_section_a = airline#section#create(['mode'])
-	let g:airline_section_b = airline#section#create(['%t'])
-	let g:airline_section_c = airline#section#create(['filetype'])
+	let g:airline_section_b = airline#section#create(['filetype'])
+	let g:airline_section_c = airline#section#create(['%t'])
 
-	let g:airline_section_x = 'u%04b 0x%04B'
-"	let g:airline_section_y = 
-"	let g:airline_section_z = 
+	let g:airline_section_x = airline#section#create(['ffenc'])
+	let g:airline_section_y = 'foo'
+	let g:airline_section_z = 'bar'
 endfunction
+autocmd User AirlineAfterInit call AirlineInit()
 
 :au User AirlineAfterInit call AirlineInit()
 
@@ -106,6 +109,7 @@ augroup filetype pascal
 	let pascal_fpc=1
 	let pascal_delphi=1
 	let pascal_functions=1
+"	set tabstop=2 softtabstop=2 shiftwidth=2 et
 augroup END
 
 endif

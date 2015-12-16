@@ -1,0 +1,94 @@
+#!/bin/bash
+#
+# sxhkdrc
+
+# Finish session
+ctrl + alt + k
+	pkill xinit
+
+# Reload sxhkd config
+ctrl + alt + l
+	pkill -USR1 -x sxhkd
+
+## Windows
+
+# Close window
+super + Escape
+	killw $(pfw)
+
+# Move windows around
+super + {h, j, k, l}
+	wmp -a 1366 768; \
+	wmv {-20 0, 0 20, 0 -20, 20 0} $(pfw)
+
+# Resize windows
+super + alt + {h, j, k, l}
+	wrs {-20 0, 0 20, 0 -20, 20 0} $(pfw)
+
+# Cycle through windows
+super + Tab
+	vroum next
+
+super + shift + Tab
+	vroum prev
+
+# Add window to a group
+super + ctrl + {1, 2, 3, 4, 5}
+	groaw -d all; \
+	groaw -a {1, 2, 3, 4, 5}
+
+# Remove window from all groups
+super + ctrl + {6, 7, 8, 9, 0}
+	groaw -d all
+
+# Toggle groups' visibility
+super + {1, 2, 3, 4, 5}
+	groaw -t {1, 2, 3, 4, 5}
+
+# Select windows using directions
+super + ctrl + {h, j, k, l}
+	closest {east, south, north, west} $(pfw)
+
+# Move windows to corners
+super + {y, u, b, n, g}
+	corner {tl, tr, bl, br, md} $(pfw)
+
+# Set window fullscreen
+super + x
+	fullscreen $(pfw)
+
+# Move windows with the mouse:
+super + !button1
+	wmv -a $((%i + $(wac x $(pfw)))) $((%i + $(wac y $(pfw)))) $(pfw)
+
+super + !button3
+	wrs -a %i %i $(pfw)
+
+## Apps
+
+# Terminal
+super + Return
+	st
+
+# Alternative font
+super + alt + Return
+	st -f $FONT1
+
+# dmenu
+super + space
+	dmenuw
+
+## Fn's
+#XF86AudioLowerVolume
+#XF86AudioRaiseVolume
+#XF86MonBrightnessDown
+#XF86MonBrightnessUp
+
+#XF86AudioNext
+#	mpc next
+#XF86AudioPrev
+#	mpc prev
+#XF86AudioPlay
+#	mpc toggle
+#XF86AudioStop
+#	mpc stop

@@ -1,38 +1,26 @@
 #!/bin/sh
 
-P='Run >'
-FN='-*-berry-*-*-*-*-11-*-*-*-*-*-*-*'
-#FN='-*-fixed-*-*-*-*-13-*-*-*-*-*-*-*'
-DIM=0.5
-
-NB=`gxc bg \#`
-NF=`gxc fg \#`
-SB=`gxc bbla \#`
-SF=`gxc bwhi \#`
-
-if [[ -n `pgrep panel` ]]
-then
-	X=80
-	Y=10
-	W=1206
-	H=20
-	L=0
+if [[ -n $(pgrep panel) ]]; then
+  X=80
+  Y=10
+  W=1206
+  H=20
+  L=0
 else
-	X=600
-	Y=372
-	W=166
-	H=24
-	L=5
+  lines=5
+  width=166
+  height=24
+  root=$(lsw -r)
+  x=$((($(wattr w $root) - $width) / 2))
+  y=$((($(wattr h $root) - $height * ($lines + 1)) / 2))
 fi
 
 dmenu_run \
-	-i -r -l $L \
-	-p "$P" \
-	-x $X -y $Y \
-	-w $W -h $H \
-	-fn $FN \
-	-dim $DIM \
-	-nb $NB \
-	-nf $NF \
-	-sb $SB \
-	-sf $SF
+  -i -r -l $lines \
+  -p ' Run > ' \
+  -x $x -y $y -w $width -h $height \
+  -fn '-*-berry-*-*-*-*-11-*-*-*-*-*-*-*' \
+  -nb $(gxc background \#) \
+  -nf $(gxc foreground \#) \
+  -sb $(gxc boldblack \#) \
+  -sf $(gxc boldwhite \#)
